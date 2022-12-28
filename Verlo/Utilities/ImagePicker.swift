@@ -51,6 +51,10 @@ class ImagePicker: ObservableObject {
         }
     }
     
+    func removePhoto(index: Int) {
+        images.remove(at: index)
+    }
+    
     func loadTransferable(from imageSelection: PhotosPickerItem?) async throws {
 //        print(Image.transferRepresentation)
         do {
