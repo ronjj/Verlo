@@ -69,14 +69,19 @@ extension HomeView {
     }
     
     private var addPostButton: some View {
-        ZStack{
-            Circle()
-                .frame(width: 30, height: 30)
-            
-            Image(systemName: "plus")
-                .fontWeight(.bold)
-                .foregroundColor(.greenBG2)
-            
+        Button {
+            print("button pressed")
+        } label : {
+            ZStack{
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+                
+                Image(systemName: "plus")
+                    .fontWeight(.bold)
+                    .foregroundColor(.greenBG2)
+                
+            }
         }
     }
 }
