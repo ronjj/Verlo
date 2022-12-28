@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5474FA3C295CA29D00804742 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3B295CA29D00804742 /* Settings View.swift */; };
+		5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3F295CB6EB00804742 /* ImagePicker.swift */; };
 		54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileView.swift */; };
 		54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4914294650D5000ABF46 /* CreatePostView.swift */; };
 		54BD49172946514F000ABF46 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49162946514F000ABF46 /* TabView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		5474FA3B295CA29D00804742 /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
+		5474FA3F295CB6EB00804742 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54BD4914294650D5000ABF46 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		54BD49162946514F000ABF46 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = "../New Group/TabView.swift"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				54BD4919294657B2000ABF46 /* ColorsExtension.swift */,
+				5474FA3F295CB6EB00804742 /* ImagePicker.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				54BD49172946514F000ABF46 /* TabView.swift in Sources */,
 				54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */,
 				54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */,
+				5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */,
 				54BD491D29465E53000ABF46 /* CustomTabBarView.swift in Sources */,
 				54E6CDB7294133A20018D353 /* HomeView.swift in Sources */,
 				54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */,
