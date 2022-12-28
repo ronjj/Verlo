@@ -9,25 +9,44 @@ import SwiftUI
 
 struct CreatePostView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Binding var isAddingView: Bool
+    @State private var exampleText1: String = ""
     
     var body: some View {
-        
-        VStack{
-            Image(systemName: "plus")
-            Text("Create a Post Screen")
-                .font(.largeTitle)
-            Button {
-                dismiss()
-            } label: {
-                Text("Dismiss")
+        NavigationView {
+            Form{
+                Section(header: Text("Title")) {
+                    TextField("Post Title", text: $exampleText1)
+
+                }
+                
+                Section(header: Text("Photos")) {
+                    
+
+                }
+            }
+            .navigationTitle("New Post")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    backArrowButton
+                }
             }
         }
     }
 }
 
-struct CreatePostView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatePostView()
+extension CreatePostView {
+    private var backArrowButton: some View {
+        Button {
+            isAddingView = false
+        } label: {
+            ZStack {
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.greenBG2)
+            }
+        }
     }
 }

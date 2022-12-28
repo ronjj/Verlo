@@ -39,7 +39,7 @@ struct HomeView: View {
             }
         }
         .fullScreenCover(isPresented: $isAddingView) {
-            CreatePostView()
+            CreatePostView(isAddingView: $isAddingView)
         }
     }
 }
