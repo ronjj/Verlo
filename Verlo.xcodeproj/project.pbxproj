@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileView.swift */; };
+		54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4914294650D5000ABF46 /* CreatePostView.swift */; };
+		54BD49172946514F000ABF46 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49162946514F000ABF46 /* TabView.swift */; };
+		54BD491A294657B2000ABF46 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4919294657B2000ABF46 /* ColorsExtension.swift */; };
+		54BD491D29465E53000ABF46 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD491C29465E53000ABF46 /* CustomTabBarView.swift */; };
+		54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD491E29466104000ABF46 /* CustomTabBarContainerView.swift */; };
+		54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49202946645B000ABF46 /* TabBarItemsPreferenceKey.swift */; };
+		54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4922294667C1000ABF46 /* TabBarItem.swift */; };
+		54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB4294133A20018D353 /* VerloApp.swift */; };
+		54E6CDB7294133A20018D353 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB6294133A20018D353 /* HomeView.swift */; };
+		54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDB8294133A30018D353 /* Assets.xcassets */; };
+		54E6CDBC294133A30018D353 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDBB294133A30018D353 /* Preview Assets.xcassets */; };
+		54F28CF729452C23003E737A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CF629452C23003E737A /* Post.swift */; };
+		54F28CFA29452FF3003E737A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CF929452FF3003E737A /* MockData.swift */; };
+		54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CFB2945336F003E737A /* PostViewModel.swift */; };
+		54F28CFE294535F6003E737A /* PostListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CFD294535F6003E737A /* PostListRowView.swift */; };
+		54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CFF29453BE7003E737A /* PostDetailView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		54BD4914294650D5000ABF46 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		54BD49162946514F000ABF46 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = "../New Group/TabView.swift"; sourceTree = "<group>"; };
+		54BD4919294657B2000ABF46 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
+		54BD491C29465E53000ABF46 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		54BD491E29466104000ABF46 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		54BD49202946645B000ABF46 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		54BD4922294667C1000ABF46 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		54E6CDB1294133A20018D353 /* Verlo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verlo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54E6CDB4294133A20018D353 /* VerloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerloApp.swift; sourceTree = "<group>"; };
+		54E6CDB6294133A20018D353 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		54E6CDB8294133A30018D353 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54E6CDBB294133A30018D353 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		54F28CF629452C23003E737A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		54F28CF929452FF3003E737A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		54F28CFB2945336F003E737A /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		54F28CFD294535F6003E737A /* PostListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListRowView.swift; sourceTree = "<group>"; };
+		54F28CFF29453BE7003E737A /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54E6CDAE294133A20018D353 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54BD4918294657A5000ABF46 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				54BD4919294657B2000ABF46 /* ColorsExtension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		54BD491B29465E3F000ABF46 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				54BD49162946514F000ABF46 /* TabView.swift */,
+				54BD49202946645B000ABF46 /* TabBarItemsPreferenceKey.swift */,
+				54BD491C29465E53000ABF46 /* CustomTabBarView.swift */,
+				54BD491E29466104000ABF46 /* CustomTabBarContainerView.swift */,
+				54BD4922294667C1000ABF46 /* TabBarItem.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		54E6CDA8294133A20018D353 = {
+			isa = PBXGroup;
+			children = (
+				54E6CDB3294133A20018D353 /* Verlo */,
+				54E6CDB2294133A20018D353 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54E6CDB2294133A20018D353 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54E6CDB1294133A20018D353 /* Verlo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54E6CDB3294133A20018D353 /* Verlo */ = {
+			isa = PBXGroup;
+			children = (
+				54BD4918294657A5000ABF46 /* Utilities */,
+				54F28CF829452FE1003E737A /* DataServices */,
+				54F28CF529452C16003E737A /* Models */,
+				54F28CF429452C0D003E737A /* ViewModels */,
+				54F28CF329452C06003E737A /* Views */,
+				54E6CDB4294133A20018D353 /* VerloApp.swift */,
+				54E6CDB8294133A30018D353 /* Assets.xcassets */,
+				54E6CDBA294133A30018D353 /* Preview Content */,
+			);
+			path = Verlo;
+			sourceTree = "<group>";
+		};
+		54E6CDBA294133A30018D353 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				54E6CDBB294133A30018D353 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54F28CF329452C06003E737A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				54BD491B29465E3F000ABF46 /* TabBar */,
+				54E6CDB6294133A20018D353 /* HomeView.swift */,
+				54BD4912294650CA000ABF46 /* ProfileView.swift */,
+				54BD4914294650D5000ABF46 /* CreatePostView.swift */,
+				54F28CFD294535F6003E737A /* PostListRowView.swift */,
+				54F28CFF29453BE7003E737A /* PostDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		54F28CF429452C0D003E737A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				54F28CFB2945336F003E737A /* PostViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		54F28CF529452C16003E737A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54F28CF629452C23003E737A /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54F28CF829452FE1003E737A /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				54F28CF929452FF3003E737A /* MockData.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54E6CDB0294133A20018D353 /* Verlo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54E6CDBF294133A30018D353 /* Build configuration list for PBXNativeTarget "Verlo" */;
+			buildPhases = (
+				54E6CDAD294133A20018D353 /* Sources */,
+				54E6CDAE294133A20018D353 /* Frameworks */,
+				54E6CDAF294133A20018D353 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Verlo;
+			productName = Verlo;
+			productReference = 54E6CDB1294133A20018D353 /* Verlo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54E6CDA9294133A20018D353 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					54E6CDB0294133A20018D353 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "Verlo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54E6CDA8294133A20018D353;
+			productRefGroup = 54E6CDB2294133A20018D353 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54E6CDB0294133A20018D353 /* Verlo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54E6CDAF294133A20018D353 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54E6CDBC294133A30018D353 /* Preview Assets.xcassets in Resources */,
+				54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54E6CDAD294133A20018D353 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54BD49172946514F000ABF46 /* TabView.swift in Sources */,
+				54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */,
+				54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */,
+				54BD491D29465E53000ABF46 /* CustomTabBarView.swift in Sources */,
+				54E6CDB7294133A20018D353 /* HomeView.swift in Sources */,
+				54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */,
+				54BD491A294657B2000ABF46 /* ColorsExtension.swift in Sources */,
+				54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */,
+				54F28CF729452C23003E737A /* Post.swift in Sources */,
+				54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */,
+				54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */,
+				54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */,
+				54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */,
+				54F28CFA29452FF3003E737A /* MockData.swift in Sources */,
+				54F28CFE294535F6003E737A /* PostListRowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		54E6CDBD294133A30018D353 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		54E6CDBE294133A30018D353 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		54E6CDC0294133A30018D353 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Verlo/Preview Content\"";
+				DEVELOPMENT_TEAM = Y72HF9FX59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldjabouin.Verlo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		54E6CDC1294133A30018D353 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Verlo/Preview Content\"";
+				DEVELOPMENT_TEAM = Y72HF9FX59;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldjabouin.Verlo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "Verlo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54E6CDBD294133A30018D353 /* Debug */,
+				54E6CDBE294133A30018D353 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54E6CDBF294133A30018D353 /* Build configuration list for PBXNativeTarget "Verlo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54E6CDC0294133A30018D353 /* Debug */,
+				54E6CDC1294133A30018D353 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54E6CDA9294133A20018D353 /* Project object */;
+}
