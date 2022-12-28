@@ -25,13 +25,7 @@ struct CreatePostView: View {
                 }
                 .padding(.horizontal)
                 
-                Button {
-                    
-                } label: {
-                    Text("create post")
-                }
-                .buttonStyle(.bordered)
-                .tint(.verloGreen)
+                createOrModifyButton
                 
                 Spacer()
             }
@@ -46,7 +40,6 @@ struct CreatePostView: View {
         }
     }
 }
-
 
 
 extension CreatePostView {
@@ -120,6 +113,16 @@ extension CreatePostView {
             selectedImagesGrid
             
         }
+    }
+    
+    private var createOrModifyButton: some View {
+        Button {
+            
+        } label: {
+            Text("create post")
+        }
+        .buttonStyle(.bordered)
+        .tint(.verloGreen)
     }
 }
 
