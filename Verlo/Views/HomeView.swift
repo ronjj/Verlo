@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationView{
             ZStack{
                 //Background Color
-                Color.greenBG2
+                Color.verloGreen
                     .edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
@@ -85,7 +85,7 @@ extension HomeView {
                 
                 Image(systemName: "plus")
                     .fontWeight(.bold)
-                    .foregroundColor(.greenBG2)
+                    .foregroundColor(.verloGreen)
                 
             }
         }

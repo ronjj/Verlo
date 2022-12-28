@@ -24,7 +24,15 @@ struct CreatePostView: View {
                     photoSection
                 }
                 .padding(.horizontal)
-        
+                
+                Button {
+                    
+                } label: {
+                    Text("create post")
+                }
+                .buttonStyle(.bordered)
+                .tint(.verloGreen)
+                
                 Spacer()
             }
             .padding(.top, 10)
@@ -51,7 +59,7 @@ extension CreatePostView {
                     .frame(width: 30, height: 30)
                     .foregroundColor(.white)
                 Image(systemName: "arrow.left")
-                    .foregroundColor(.greenBG2)
+                    .foregroundColor(.verloGreen)
             }
         }
     }
@@ -89,10 +97,10 @@ extension CreatePostView {
                                             Image(systemName: "xmark")
                                                 .font(.caption)
                                                 .foregroundColor(.white)
-                                                
+                                            
                                         }
                                     }
-                                }
+                            }
                         }
                     }
                     .padding(.top)
@@ -110,12 +118,8 @@ extension CreatePostView {
                 .fontWeight(.bold)
             addPhotosButton
             selectedImagesGrid
-
+            
         }
-    }
-    
-    private var deletePhotoButton: some View {
-        Text("...")
     }
 }
 
@@ -133,6 +137,7 @@ struct CustomTextSection: View {
                 .fontWeight(.bold)
             TextField(placeholderText, text: $exampleText1)
                 .autocapitalization(.none)
+                .autocorrectionDisabled()
                 .foregroundColor(.secondary)
             Divider()
         }
