@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5474FA3C295CA29D00804742 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3B295CA29D00804742 /* Settings View.swift */; };
 		54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileView.swift */; };
 		54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4914294650D5000ABF46 /* CreatePostView.swift */; };
 		54BD49172946514F000ABF46 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49162946514F000ABF46 /* TabView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5474FA3B295CA29D00804742 /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		54BD4914294650D5000ABF46 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		54BD49162946514F000ABF46 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = "../New Group/TabView.swift"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				54BD491B29465E3F000ABF46 /* TabBar */,
 				54E6CDB6294133A20018D353 /* HomeView.swift */,
+				5474FA3B295CA29D00804742 /* Settings View.swift */,
 				54BD4912294650CA000ABF46 /* ProfileView.swift */,
 				54BD4914294650D5000ABF46 /* CreatePostView.swift */,
 				54F28CFD294535F6003E737A /* PostListRowView.swift */,
@@ -234,6 +237,7 @@
 				54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */,
 				54F28CF729452C23003E737A /* Post.swift in Sources */,
 				54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */,
+				5474FA3C295CA29D00804742 /* Settings View.swift in Sources */,
 				54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */,
 				54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */,
 				54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */,

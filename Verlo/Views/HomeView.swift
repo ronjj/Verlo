@@ -11,6 +11,8 @@ struct HomeView: View {
     
     @EnvironmentObject private var vm: PostViewModel
     
+    @State private var isAddingView = false
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -20,21 +22,24 @@ struct HomeView: View {
                 
                 ScrollView{
                     listView
-                    .padding(.vertical)
+                        .padding(.vertical)
                 }
                 .scrollIndicators(.hidden)
             }
-           
+            
             //Code to give 2 line tab bar in SwiftUI
             .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                       verloAtLocationText
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        addPostButton
-                    }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    verloAtLocationText
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    addPostButton
+                }
             }
+        }
+        .fullScreenCover(isPresented: $isAddingView) {
+            CreatePostView()
         }
     }
 }
@@ -70,7 +75,8 @@ extension HomeView {
     
     private var addPostButton: some View {
         Button {
-            print("button pressed")
+            //            activeSheet = .addPost
+            isAddingView.toggle()
         } label : {
             ZStack{
                 Circle()

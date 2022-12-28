@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct CreatePostView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         
         VStack{
             Image(systemName: "plus")
             Text("Create a Post Screen")
                 .font(.largeTitle)
+            Button {
+                dismiss()
+            } label: {
+                Text("Dismiss")
+            }
         }
     }
 }
