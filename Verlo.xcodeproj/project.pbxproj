@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		541766A2295DF5E500607F69 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 541766A1295DF5E500607F69 /* FirebaseAnalytics */; };
+		541766A4295DF5E500607F69 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 541766A3295DF5E500607F69 /* FirebaseAuth */; };
+		541766A6295DF5E500607F69 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 541766A5295DF5E500607F69 /* FirebaseFirestore */; };
+		541766A8295DF5E500607F69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 541766A7295DF5E500607F69 /* FirebaseStorage */; };
+		541766AA295DF7D200607F69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 541766A9295DF7D200607F69 /* GoogleService-Info.plist */; };
 		5474FA3C295CA29D00804742 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3B295CA29D00804742 /* Settings View.swift */; };
 		5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3F295CB6EB00804742 /* ImagePicker.swift */; };
 		54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileView.swift */; };
@@ -29,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		541766A9295DF7D200607F69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5474FA3B295CA29D00804742 /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		5474FA3F295CB6EB00804742 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -56,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541766A2295DF5E500607F69 /* FirebaseAnalytics in Frameworks */,
+				541766A8295DF5E500607F69 /* FirebaseStorage in Frameworks */,
+				541766A4295DF5E500607F69 /* FirebaseAuth in Frameworks */,
+				541766A6295DF5E500607F69 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +119,7 @@
 				54F28CF329452C06003E737A /* Views */,
 				54E6CDB4294133A20018D353 /* VerloApp.swift */,
 				54E6CDB8294133A30018D353 /* Assets.xcassets */,
+				541766A9295DF7D200607F69 /* GoogleService-Info.plist */,
 				54E6CDBA294133A30018D353 /* Preview Content */,
 			);
 			path = Verlo;
@@ -176,6 +187,12 @@
 			dependencies = (
 			);
 			name = Verlo;
+			packageProductDependencies = (
+				541766A1295DF5E500607F69 /* FirebaseAnalytics */,
+				541766A3295DF5E500607F69 /* FirebaseAuth */,
+				541766A5295DF5E500607F69 /* FirebaseFirestore */,
+				541766A7295DF5E500607F69 /* FirebaseStorage */,
+			);
 			productName = Verlo;
 			productReference = 54E6CDB1294133A20018D353 /* Verlo.app */;
 			productType = "com.apple.product-type.application";
@@ -204,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 54E6CDA8294133A20018D353;
+			packageReferences = (
+				541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 54E6CDB2294133A20018D353 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -220,6 +240,7 @@
 			files = (
 				54E6CDBC294133A30018D353 /* Preview Assets.xcassets in Resources */,
 				54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */,
+				541766AA295DF7D200607F69 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,11 +399,13 @@
 				DEVELOPMENT_TEAM = Y72HF9FX59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Verlo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -390,9 +413,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldjabouin.Verlo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -407,11 +433,13 @@
 				DEVELOPMENT_TEAM = Y72HF9FX59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Verlo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -419,9 +447,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldjabouin.Verlo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -447,6 +478,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		541766A1295DF5E500607F69 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		541766A3295DF5E500607F69 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		541766A5295DF5E500607F69 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		541766A7295DF5E500607F69 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 541766A0295DF5E500607F69 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 54E6CDA9294133A20018D353 /* Project object */;
 }
