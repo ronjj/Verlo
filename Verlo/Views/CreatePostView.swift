@@ -83,15 +83,7 @@ extension CreatePostView {
                                     Button{
                                         imagePicker.removePhoto(index: index)
                                     } label: {
-                                        ZStack{
-                                            Circle()
-                                                .frame(width: 25, height: 25)
-                                                .foregroundColor(.red)
-                                            Image(systemName: "xmark")
-                                                .font(.caption)
-                                                .foregroundColor(.white)
-                                            
-                                        }
+                                        redXMarkButton
                                     }
                             }
                         }
@@ -124,6 +116,19 @@ extension CreatePostView {
         .buttonStyle(.bordered)
         .tint(.verloGreen)
     }
+    
+    private var redXMarkButton: some View {
+        ZStack{
+            Circle()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.red)
+            Image(systemName: "xmark")
+                .font(.caption)
+                .foregroundColor(.white)
+            
+        }
+    }
+    
 }
 
 struct CustomTextSection: View {
@@ -139,10 +144,34 @@ struct CustomTextSection: View {
                 .font(.headline)
                 .fontWeight(.bold)
             TextField(placeholderText, text: $exampleText1)
+            CharactersRemainView(currentCount: exampleText1.count)
+
+            
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
             Divider()
         }
     }
+    
+struct CharactersRemainView: View {
+        
+        var currentCount: Int
+        
+        var body: some View {
+//            Text("Characters Remaining: ")
+//                .font(.callout)
+//                .foregroundColor(.secondary)
+//                +
+                Text("\(30 - currentCount)")
+                .bold()
+                .font(.callout)
+                .foregroundColor(currentCount <= 30 ? .green : Color(.systemPink))
+                +
+                Text(" characters remain")
+                .font(.callout)
+                .foregroundColor(.secondary)
+        }
+    }
+
 }

@@ -7,10 +7,11 @@
 
 import SwiftUI
 import MapKit
+import FirebaseFirestoreSwift
 
 struct Post: Identifiable, Hashable, Codable {
-    var id = UUID().uuidString
-//   @DocumentID var id: String? replace uuid with this to setup with firebase
+//    var id = UUID().uuidString
+    @DocumentID var id: String?
     var title: String
     var locationText: String
     var lattitude: Double

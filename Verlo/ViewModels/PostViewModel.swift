@@ -5,7 +5,8 @@
 //  Created by Ronald Jabouin on 12/10/22.
 //
 
-import Foundation
+import SwiftUI
+import FirebaseStorage
 
 
 class PostViewModel: ObservableObject {
@@ -16,4 +17,6 @@ class PostViewModel: ObservableObject {
         let posts = PostsDataService.posts
         self.posts = posts
     }
+    
+
 }

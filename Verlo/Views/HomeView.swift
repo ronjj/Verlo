@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
+import FirebaseAnalytics
 
 struct HomeView: View {
     
     @EnvironmentObject private var vm: PostViewModel
     
     @State private var isAddingView = false
-    
+//    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+    //TODO: Switch out vm.posts for just posts in code.
+
     var body: some View {
         NavigationView{
             ZStack{
