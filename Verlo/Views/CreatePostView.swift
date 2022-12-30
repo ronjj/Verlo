@@ -18,7 +18,7 @@ struct CreatePostView: View {
     
     //Location Picker
     @State private var showLocationPicker = false
-    @State private var coordinates = CLLocationCoordinate2D(latitude: 42.44333, longitude: -76.50000)
+    @State private var coordinates = CLLocationCoordinate2D(latitude: 42.449317, longitude: -76.484366)
 //    @State private var coordinates = CLLocationCoordinate2D(latitude: 10.5739475, longitude: -15.50000)
 
     

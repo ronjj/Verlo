@@ -1,11 +1,10 @@
 
-//
 //  MapView.swift
 //
 //
 //  Created by Alessio Rubicini on 13/08/21.
 //  From LocationPickerForSwiftUI on Github
-//
+//  Forked version of MapView.swift from Peter Barth on Github
 //  Tweaked by Ronald Jabouin
 
 import Foundation
@@ -18,17 +17,25 @@ struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var span: MKCoordinateSpan
 
+
     let mapView = MKMapView()
 
     func makeUIView(context: Context) -> MKMapView {
         mapView.delegate = context.coordinator
         mapView.centerCoordinate = self.centerCoordinate
         mapView.region.span = self.span
+
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        //print(#function)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: self.centerCoordinate.latitude, longitude: self.centerCoordinate.longitude)
+
+        view.removeAnnotations(view.annotations)
+        view.addAnnotation(annotation)
+        
+        view.centerCoordinate = self.centerCoordinate
     }
 
     func makeCoordinator() -> Coordinator {

@@ -3,7 +3,7 @@
 //
 //
 //  Created by Alessio Rubicini on 13/08/21.
-// From LocationPickerForSwiftUI on Github
+//  From LocationPickerForSwiftUI on Github
 //
 //  Tweaked by Ronald Jabouin
 
