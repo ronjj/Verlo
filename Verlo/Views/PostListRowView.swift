@@ -19,13 +19,8 @@ struct PostListRowView: View {
                     //.aspectRatio(contentMode: .fill)
                 .frame(maxWidth: .infinity)
                 .edgesIgnoringSafeArea(.horizontal)
-            HStack{
-                leftSideTextInfo
-                
-                Spacer()
-                
-                rightSideTextInfo
-            }
+            
+            postInfo
             .padding(.horizontal, 5)
             
         }
@@ -36,6 +31,15 @@ struct PostListRowView: View {
 }
 
 extension PostListRowView {
+    private var postInfo: some View {
+        HStack{
+            leftSideTextInfo
+            
+            Spacer()
+            
+            rightSideTextInfo
+        }
+    }
     private var rightSideTextInfo: some View {
         VStack(alignment: .trailing) {
             HStack{

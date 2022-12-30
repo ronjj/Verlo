@@ -10,7 +10,6 @@ import MapKit
 import FirebaseFirestoreSwift
 
 struct Post: Identifiable, Hashable, Codable {
-//    var id = UUID().uuidString
     @DocumentID var id: String?
 //    @ServerTimestamp var created: Date?
     var title: String
@@ -27,6 +26,7 @@ struct Post: Identifiable, Hashable, Codable {
                formatter.dateFormat = "MMM d"
                return formatter.string(from: dateEvent)
            }
+    
             var timeString: String {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
@@ -34,14 +34,12 @@ struct Post: Identifiable, Hashable, Codable {
                 return formatter.string(from: dateEvent)
             }
     
-        
             var fullDateAndTimeString: String {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MMM d, yyyy, h:mm a"
+                formatter.dateFormat = "MMM d, yyyy @ h:mm a"
                 formatter.timeZone = NSTimeZone(name: "EDT") as TimeZone?
                 return formatter.string(from: dateEvent)
             }
-
 }
 
 

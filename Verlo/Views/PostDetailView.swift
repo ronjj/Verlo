@@ -83,6 +83,8 @@ extension PostDetailView {
     private var mapSection: some View {
         VStack{
             HStack{
+                Spacer()
+                
                 Button {
                     likeTapped.toggle()
                 } label : {
@@ -96,14 +98,11 @@ extension PostDetailView {
                 } label : {
                     Image(systemName: "square.and.arrow.up")
                         .font(.title2)
-                    
                 }
-                
-                Spacer()
             }
             .padding(.horizontal)
             
-            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))))
+            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))))
                 .aspectRatio(1, contentMode: .fit)
                 .cornerRadius(30)
                 .padding(.horizontal)

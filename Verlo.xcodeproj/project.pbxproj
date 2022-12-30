@@ -30,6 +30,8 @@
 		54DF0DD4295F5BF700DD3DDA /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD3295F5BF700DD3DDA /* LocationPicker.swift */; };
 		54DF0DD6295F5C1A00DD3DDA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD5295F5C1A00DD3DDA /* MapView.swift */; };
 		54DF0DD8295F5C4A00DD3DDA /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD7295F5C4A00DD3DDA /* VisualEffectView.swift */; };
+		54DF0DDA295F8D6000DD3DDA /* FirebasePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD9295F8D6000DD3DDA /* FirebasePostViewModel.swift */; };
+		54DF0DDC295F8E3300DD3DDA /* FirebasePostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DDB295F8E3300DD3DDA /* FirebasePostsViewModel.swift */; };
 		54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB4294133A20018D353 /* VerloApp.swift */; };
 		54E6CDB7294133A20018D353 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB6294133A20018D353 /* HomeView.swift */; };
 		54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDB8294133A30018D353 /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		54DF0DD3295F5BF700DD3DDA /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		54DF0DD5295F5C1A00DD3DDA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		54DF0DD7295F5C4A00DD3DDA /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		54DF0DD9295F8D6000DD3DDA /* FirebasePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePostViewModel.swift; sourceTree = "<group>"; };
+		54DF0DDB295F8E3300DD3DDA /* FirebasePostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePostsViewModel.swift; sourceTree = "<group>"; };
 		54E6CDB1294133A20018D353 /* Verlo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verlo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E6CDB4294133A20018D353 /* VerloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerloApp.swift; sourceTree = "<group>"; };
 		54E6CDB6294133A20018D353 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				54F28CFB2945336F003E737A /* PostViewModel.swift */,
+				54DF0DD9295F8D6000DD3DDA /* FirebasePostViewModel.swift */,
+				54DF0DDB295F8E3300DD3DDA /* FirebasePostsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 				54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */,
 				54DF0DD8295F5C4A00DD3DDA /* VisualEffectView.swift in Sources */,
 				54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */,
+				54DF0DDC295F8E3300DD3DDA /* FirebasePostsViewModel.swift in Sources */,
 				5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */,
 				54DF0DD2295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift in Sources */,
 				54BD491D29465E53000ABF46 /* CustomTabBarView.swift in Sources */,
@@ -301,6 +308,7 @@
 				54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */,
 				54F28CF729452C23003E737A /* Post.swift in Sources */,
 				54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */,
+				54DF0DDA295F8D6000DD3DDA /* FirebasePostViewModel.swift in Sources */,
 				54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */,
 				54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */,
 				54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */,

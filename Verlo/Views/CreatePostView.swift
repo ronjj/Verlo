@@ -11,6 +11,20 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import MapKit
 
+
+//Enums
+enum Mode {
+    case new
+    case edit
+}
+
+enum Action {
+    case delete
+    case done
+    case cancel
+}
+
+
 struct CreatePostView: View {
     
     //Presenting this sheet
@@ -25,13 +39,31 @@ struct CreatePostView: View {
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
     
+    //Old Firebase
+    @ObservedObject var viewModel = FirebasePostViewModel()
+    var mode: Mode = .new
+    var completionHandler: ((Result<Action, Error>) -> Void)?
+    @Environment(\.presentationMode) private var presentationMode
+    @State var presentActionSheet = false
+
+    
+    
+    
+    var saveButton: some View {
+        Button(action: { self.handleDoneTapped() }) {
+            Text(mode == .new ? "Done" : "Save")
+        }
+        .disabled(!viewModel.modified)
+    }
+    
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 10){
                     Group {
-                        CustomTextSection(sectionTitle: "title", placeholderText: "post title")
-                        CustomTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
+                        TitleTextSection(sectionTitle: "title", placeholderText: "post title")
+                        LocationTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
                         photoSection
                         mapSection
                     }
@@ -39,11 +71,29 @@ struct CreatePostView: View {
                     
                     createOrModifyButton
                     
+                    if mode == .edit {
+                        Button {
+                            
+                        } label : {
+                            Text("delete post")
+                                .foregroundColor(.red)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    
                     Spacer()
                 }
                 .padding(.top, 10)
                 
                 .navigationTitle("new post")
+                .actionSheet(isPresented: $presentActionSheet) {
+                  ActionSheet(title: Text("Are you sure?"),
+                              buttons: [
+                                .destructive(Text("Delete book"),
+                                             action: { self.handleDeleteTapped() }),
+                                .cancel()
+                              ])
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         backArrowButton
@@ -87,6 +137,7 @@ extension CreatePostView {
                 Text("select photos")
                 Image(systemName: "photo.on.rectangle.angled")
                     .imageScale(.large)
+                    .tint(.red)
             }
         }
     }
@@ -146,7 +197,7 @@ extension CreatePostView {
             .tint(saveButtonClicked ? .green : .red)
             
             if saveButtonClicked {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))))
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))))
                     .aspectRatio(contentMode: .fill)
                     .cornerRadius(30)
                     .allowsHitTesting(false)
@@ -189,9 +240,9 @@ extension CreatePostView {
     
     private var createOrModifyButton: some View {
         Button {
-            
+            self.handleDoneTapped()
         } label: {
-            Text("create post")
+            Text(mode == .new ? "create post" : "save changes")
         }
         .buttonStyle(.bordered)
         .tint(.green)
@@ -208,12 +259,35 @@ extension CreatePostView {
             
         }
     }
+    
+    //MARK: Action Handlers
+    func handleCancelTapped() {
+        self.dismiss()
+    }
+    
+    func handleDoneTapped() {
+        self.viewModel.handleDoneTapped()
+        self.dismiss()
+    }
+    
+    func handleDeleteTapped() {
+        viewModel.handleDeleteTapped()
+        self.dismiss()
+        self.completionHandler?(.success(.delete))
+    }
+    
+    func dismiss() {
+        self.presentationMode.wrappedValue.dismiss()
+    }
 }
 
 
-struct CustomTextSection: View {
+
+
+
+struct TitleTextSection: View {
     
-    @State private var exampleText1: String = ""
+    @ObservedObject var viewModel = FirebasePostViewModel()
     
     var sectionTitle: String
     var placeholderText: String
@@ -223,18 +297,44 @@ struct CustomTextSection: View {
             Text(sectionTitle)
                 .font(.headline)
                 .fontWeight(.bold)
-            TextField(placeholderText, text: $exampleText1)
+            TextField(placeholderText, text: $viewModel.post.title)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
             
-            CharactersRemainView(currentCount: exampleText1.count)
+            CharactersRemainView(currentCount: viewModel.post.title.count)
+            
+            Divider()
+        }
+    }
+}
+
+struct LocationTextSection: View {
+    
+    @ObservedObject var viewModel = FirebasePostViewModel()
+    
+    var sectionTitle: String
+    var placeholderText: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(sectionTitle)
+                .font(.headline)
+                .fontWeight(.bold)
+            TextField(placeholderText, text: $viewModel.post.locationText)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .foregroundColor(.secondary)
+            
+            CharactersRemainView(currentCount: viewModel.post.locationText.count)
             
             Divider()
         }
     }
     
-struct CharactersRemainView: View {
+}
+    
+    struct CharactersRemainView: View {
         
         var currentCount: Int
         
@@ -253,4 +353,7 @@ struct CharactersRemainView: View {
                 .foregroundColor(.secondary)
         }
     }
-}
+    
+
+    
+    
