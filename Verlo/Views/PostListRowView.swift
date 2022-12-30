@@ -37,7 +37,7 @@ struct PostListRowView: View {
                             .multilineTextAlignment(.trailing)
                         
                     }
-                    Text("posted @ \(post.timeString)")
+                    Text("posted \(post.dateString) @ \(post.timeString)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .minimumScaleFactor(0.7)

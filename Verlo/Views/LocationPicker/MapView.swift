@@ -17,7 +17,6 @@ struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var span: MKCoordinateSpan
 
-
     let mapView = MKMapView()
 
     func makeUIView(context: Context) -> MKMapView {
@@ -61,7 +60,7 @@ struct MapView: UIViewRepresentable {
             let location = gRecognizer.location(in: self.parent.mapView)
             // position on the map, CLLocationCoordinate2D
             let coordinate = self.parent.mapView.convert(location, toCoordinateFrom: self.parent.mapView)
-            
+
             withAnimation {
                 let clObject = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 parent.centerCoordinate = clObject
@@ -69,13 +68,12 @@ struct MapView: UIViewRepresentable {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = clObject
                 
+                
                 withAnimation {
                     parent.mapView.removeAnnotations(parent.mapView.annotations)
                     parent.mapView.addAnnotation(annotation)
                 }
-                
             }
-            
         }
     }
 }

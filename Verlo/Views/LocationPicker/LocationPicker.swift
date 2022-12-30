@@ -19,6 +19,8 @@ public struct LocationPicker: View {
     
     let instructions: String
     @Binding var coordinates: CLLocationCoordinate2D
+
+
     @State var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     @State private var alert = (false, "")
     let dismissOnSelection: Bool
@@ -64,12 +66,13 @@ public struct LocationPicker: View {
                     
                 Spacer()
                 
-                Text("\(coordinates.latitude), \(coordinates.longitude)")
-                    .padding()
-                    .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))
-                    .onTapGesture {
-                        UIPasteboard.general.setValue("\(coordinates.latitude), \(coordinates.longitude)", forPasteboardType: kUTTypePlainText as String)
-                    }
+                //Code to see coordinates in the location picker
+//                Text("\(coordinates.latitude), \(coordinates.longitude)")
+//                    .padding()
+//                    .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))
+//                    .onTapGesture {
+//                        UIPasteboard.general.setValue("\(coordinates.latitude), \(coordinates.longitude)", forPasteboardType: kUTTypePlainText as String)
+//                    }
                 
             }.padding()
             

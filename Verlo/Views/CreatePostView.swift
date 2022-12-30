@@ -19,8 +19,7 @@ struct CreatePostView: View {
     //Location Picker
     @State private var showLocationPicker = false
     @State private var coordinates = CLLocationCoordinate2D(latitude: 42.449317, longitude: -76.484366)
-//    @State private var coordinates = CLLocationCoordinate2D(latitude: 10.5739475, longitude: -15.50000)
-
+    @State var saveButtonClicked = false
     
     //Image Picker
     @StateObject var imagePicker = ImagePicker()
@@ -28,33 +27,35 @@ struct CreatePostView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 10){
-                Group {
-                    CustomTextSection(sectionTitle: "title", placeholderText: "post title")
-                    CustomTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
-                    photoSection
-                    mapSection
+            ScrollView {
+                VStack(spacing: 10){
+                    Group {
+                        CustomTextSection(sectionTitle: "title", placeholderText: "post title")
+                        CustomTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
+                        photoSection
+                        mapSection
+                    }
+                    .padding(.horizontal)
+                    
+                    createOrModifyButton
+                    
+                    Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.top, 10)
                 
-                createOrModifyButton
-                
-                Spacer()
-            }
-            .padding(.top, 10)
-            
-            .navigationTitle("new post")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    backArrowButton
+                .navigationTitle("new post")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        backArrowButton
+                    }
                 }
-            }
-            .sheet(isPresented: $showLocationPicker) {
-                NavigationView {
-                    LocationPicker(instructions: "tap somewhere to select your coordinates", coordinates: $coordinates)
-                        .navigationTitle("select location")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .navigationBarItems(leading: mapCloseButton, trailing: mapSaveButton)
+                .sheet(isPresented: $showLocationPicker) {
+                    NavigationView {
+                        LocationPicker(instructions: "tap somewhere to select your coordinates", coordinates: $coordinates)
+                            .navigationTitle("select location")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarItems(leading: mapCloseButton, trailing: mapSaveButton)
+                    }
                 }
             }
         }
@@ -105,7 +106,7 @@ extension CreatePostView {
                                     } label: {
                                         redXMarkButton
                                     }
-                            }
+                                }
                         }
                     }
                     .padding(.top)
@@ -123,12 +124,13 @@ extension CreatePostView {
                 .fontWeight(.bold)
             addPhotosButton
             selectedImagesGrid
+            Divider()
             
         }
     }
     
     private var mapSection: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 5) {
             Text("map location")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -138,19 +140,26 @@ extension CreatePostView {
             } label: {
                 HStack{
                     Image(systemName: "map")
-                    Text("select location")
+                    Text(saveButtonClicked ? "selected location:" : "tap to select a location")
                 }
             }
+            .tint(saveButtonClicked ? .green : .red)
             
-            Divider()
-
+            if saveButtonClicked {
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))))
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(30)
+                    .allowsHitTesting(false)
+            }
         }
+        .frame(maxWidth: .infinity)
+        
     }
     
     private var mapCloseButton: some View {
         Button {
             self.showLocationPicker.toggle()
-
+            
         } label : {
             Text("close")
         }
@@ -162,21 +171,21 @@ extension CreatePostView {
     private var mapSaveButton: some View {
         Button {
             self.showLocationPicker.toggle()
-
+            self.saveButtonClicked = true
+            
         } label : {
             Text("save")
         }
         .buttonStyle(.borderedProminent)
         .tint(.green)
-        }
     }
-
-private var mapSelectLocationText: some View {
-    Text("select location")
-        .font(.subheadline)
-        .fontWeight(.bold)
-        .background(.ultraThinMaterial)
-}
+    
+    private var mapSelectLocationText: some View {
+        Text("select location")
+            .font(.subheadline)
+            .fontWeight(.bold)
+            .background(.ultraThinMaterial)
+    }
     
     private var createOrModifyButton: some View {
         Button {
@@ -199,6 +208,7 @@ private var mapSelectLocationText: some View {
             
         }
     }
+}
 
 
 struct CustomTextSection: View {
@@ -219,7 +229,7 @@ struct CustomTextSection: View {
                 .foregroundColor(.secondary)
             
             CharactersRemainView(currentCount: exampleText1.count)
-
+            
             Divider()
         }
     }
@@ -229,19 +239,18 @@ struct CharactersRemainView: View {
         var currentCount: Int
         
         var body: some View {
-//            Text("Characters Remaining: ")
-//                .font(.callout)
-//                .foregroundColor(.secondary)
-//                +
-                Text("\(30 - currentCount)")
+            //            Text("Characters Remaining: ")
+            //                .font(.callout)
+            //                .foregroundColor(.secondary)
+            //                +
+            Text("\(30 - currentCount)")
                 .bold()
                 .font(.callout)
                 .foregroundColor(currentCount <= 30 ? .green : Color(.systemPink))
-                +
-                Text(" characters remain")
+            +
+            Text(" characters remain")
                 .font(.callout)
                 .foregroundColor(.secondary)
         }
     }
-
 }

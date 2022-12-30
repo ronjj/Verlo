@@ -24,12 +24,20 @@ struct Post: Identifiable, Hashable, Codable {
     var dateEvent: Date
            var dateString: String {
                let formatter = DateFormatter()
-               formatter.dateFormat = "MM-dd-YY"
+               formatter.dateFormat = "MMM d"
                return formatter.string(from: dateEvent)
            }
             var timeString: String {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
+                formatter.timeZone = NSTimeZone(name: "EDT") as TimeZone?
+                return formatter.string(from: dateEvent)
+            }
+    
+        
+            var fullDateAndTimeString: String {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MMM d, yyyy, h:mm a"
                 formatter.timeZone = NSTimeZone(name: "EDT") as TimeZone?
                 return formatter.string(from: dateEvent)
             }

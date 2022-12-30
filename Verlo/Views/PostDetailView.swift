@@ -17,9 +17,7 @@ struct PostDetailView: View {
             Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))))
                     .aspectRatio(1, contentMode: .fit)
                     .cornerRadius(30)
-            Text("lat: \(post.lattitude) , long: \(post.longitude)")
-                .background(.ultraThinMaterial)
-                .font(.headline)
+            Text(post.fullDateAndTimeString)
             
 //            Text("Detail view for \(post.title)")
 //            Text("selected coordinates \(post.lattitude) and \(post.longitude)")
