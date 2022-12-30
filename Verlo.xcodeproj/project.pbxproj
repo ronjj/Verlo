@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		541766AA295DF7D200607F69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 541766A9295DF7D200607F69 /* GoogleService-Info.plist */; };
 		541766AD295DFB0300607F69 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 541766AC295DFB0300607F69 /* FirebaseAnalytics */; };
 		541766AF295DFB0300607F69 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 541766AE295DFB0300607F69 /* FirebaseAnalyticsSwift */; };
 		541766B1295DFB0300607F69 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 541766B0295DFB0300607F69 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -31,6 +30,7 @@
 		54E6CDB7294133A20018D353 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB6294133A20018D353 /* HomeView.swift */; };
 		54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDB8294133A30018D353 /* Assets.xcassets */; };
 		54E6CDBC294133A30018D353 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDBB294133A30018D353 /* Preview Assets.xcassets */; };
+		54EAEB4B295E7488008C42B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54EAEB4A295E7488008C42B2 /* GoogleService-Info.plist */; };
 		54F28CF729452C23003E737A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CF629452C23003E737A /* Post.swift */; };
 		54F28CFA29452FF3003E737A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CF929452FF3003E737A /* MockData.swift */; };
 		54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F28CFB2945336F003E737A /* PostViewModel.swift */; };
@@ -39,7 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		541766A9295DF7D200607F69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		541766C0295DFB6400607F69 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5474FA3F295CB6EB00804742 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		54E6CDB6294133A20018D353 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		54E6CDB8294133A30018D353 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54E6CDBB294133A30018D353 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		54EAEB4A295E7488008C42B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54F28CF629452C23003E737A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		54F28CF929452FF3003E737A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		54F28CFB2945336F003E737A /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -106,6 +106,7 @@
 		54E6CDA8294133A20018D353 = {
 			isa = PBXGroup;
 			children = (
+				54EAEB4A295E7488008C42B2 /* GoogleService-Info.plist */,
 				54E6CDB3294133A20018D353 /* Verlo */,
 				54E6CDB2294133A20018D353 /* Products */,
 			);
@@ -129,7 +130,6 @@
 				54F28CF329452C06003E737A /* Views */,
 				54E6CDB4294133A20018D353 /* VerloApp.swift */,
 				54E6CDB8294133A30018D353 /* Assets.xcassets */,
-				541766A9295DF7D200607F69 /* GoogleService-Info.plist */,
 				54E6CDBA294133A30018D353 /* Preview Content */,
 			);
 			path = Verlo;
@@ -255,7 +255,7 @@
 			files = (
 				54E6CDBC294133A30018D353 /* Preview Assets.xcassets in Resources */,
 				54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */,
-				541766AA295DF7D200607F69 /* GoogleService-Info.plist in Resources */,
+				54EAEB4B295E7488008C42B2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

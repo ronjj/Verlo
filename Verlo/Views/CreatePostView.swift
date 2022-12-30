@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PhotosUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct CreatePostView: View {
     
@@ -63,7 +65,7 @@ extension CreatePostView {
                      matching: .images,
                      photoLibrary: .shared()) {
             HStack{
-                Text("Select Photos")
+                Text("select photos")
                 Image(systemName: "photo.on.rectangle.angled")
                     .imageScale(.large)
             }
@@ -114,7 +116,7 @@ extension CreatePostView {
             Text("create post")
         }
         .buttonStyle(.bordered)
-        .tint(.verloGreen)
+        .tint(.green)
     }
     
     private var redXMarkButton: some View {
@@ -128,7 +130,6 @@ extension CreatePostView {
             
         }
     }
-    
 }
 
 struct CustomTextSection: View {
@@ -144,12 +145,12 @@ struct CustomTextSection: View {
                 .font(.headline)
                 .fontWeight(.bold)
             TextField(placeholderText, text: $exampleText1)
-            CharactersRemainView(currentCount: exampleText1.count)
-
-            
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
+            
+            CharactersRemainView(currentCount: exampleText1.count)
+
             Divider()
         }
     }

@@ -7,20 +7,19 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
-import FirebaseAnalytics
+import FirebaseFirestore
 
 struct HomeView: View {
     
-    @EnvironmentObject private var vm: PostViewModel
+  //  @EnvironmentObject private var vm: PostViewModel
     
     @State private var isAddingView = false
-//    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
     //TODO: Switch out vm.posts for just posts in code.
 
     var body: some View {
         NavigationView{
             ZStack{
-                //Background Color
                 Color.verloGreen
                     .edgesIgnoringSafeArea(.all)
                 
@@ -49,15 +48,14 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    
     private var listView: some View {
         LazyVStack{
-            ForEach(vm.posts) { post in
+            ForEach(posts) { post in
                 NavigationLink(destination: PostDetailView(post: post)) {
                     PostListRowView(post: post)
-                    
+
                 }
-                //removes the blue highlight from SwiftUI NavigationLink
+//                    removes the blue highlight from SwiftUI NavigationLink
                 .buttonStyle(.plain)
             }
         }
@@ -79,7 +77,6 @@ extension HomeView {
     
     private var addPostButton: some View {
         Button {
-            //            activeSheet = .addPost
             isAddingView.toggle()
         } label : {
             ZStack{
@@ -90,7 +87,6 @@ extension HomeView {
                 Image(systemName: "plus")
                     .fontWeight(.bold)
                     .foregroundColor(.verloGreen)
-                
             }
         }
     }
