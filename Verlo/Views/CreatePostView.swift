@@ -9,11 +9,20 @@ import SwiftUI
 import PhotosUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import MapKit
 
 struct CreatePostView: View {
     
+    //Presenting this sheet
     @Binding var isAddingView: Bool
     
+    //Location Picker
+    @State private var showLocationPicker = false
+    @State private var coordinates = CLLocationCoordinate2D(latitude: 42.44333, longitude: -76.50000)
+//    @State private var coordinates = CLLocationCoordinate2D(latitude: 10.5739475, longitude: -15.50000)
+
+    
+    //Image Picker
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
     
@@ -22,8 +31,9 @@ struct CreatePostView: View {
             VStack(spacing: 10){
                 Group {
                     CustomTextSection(sectionTitle: "title", placeholderText: "post title")
-                    CustomTextSection(sectionTitle: "location", placeholderText: "general location of photos")
+                    CustomTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
                     photoSection
+                    mapSection
                 }
                 .padding(.horizontal)
                 
@@ -37,6 +47,14 @@ struct CreatePostView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     backArrowButton
+                }
+            }
+            .sheet(isPresented: $showLocationPicker) {
+                NavigationView {
+                    LocationPicker(instructions: "tap somewhere to select your coordinates", coordinates: $coordinates)
+                        .navigationTitle("select location")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarItems(leading: mapCloseButton, trailing: mapSaveButton)
                 }
             }
         }
@@ -109,6 +127,57 @@ extension CreatePostView {
         }
     }
     
+    private var mapSection: some View {
+        VStack(alignment: .leading) {
+            Text("map location")
+                .font(.headline)
+                .fontWeight(.bold)
+            
+            Button {
+                self.showLocationPicker.toggle()
+            } label: {
+                HStack{
+                    Image(systemName: "map")
+                    Text("select location")
+                }
+            }
+            
+            Divider()
+
+        }
+    }
+    
+    private var mapCloseButton: some View {
+        Button {
+            self.showLocationPicker.toggle()
+
+        } label : {
+            Text("close")
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.red)
+    }
+    
+    
+    private var mapSaveButton: some View {
+        Button {
+            self.showLocationPicker.toggle()
+
+        } label : {
+            Text("save")
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.green)
+        }
+    }
+
+private var mapSelectLocationText: some View {
+    Text("select location")
+        .font(.subheadline)
+        .fontWeight(.bold)
+        .background(.ultraThinMaterial)
+}
+    
     private var createOrModifyButton: some View {
         Button {
             
@@ -130,7 +199,7 @@ extension CreatePostView {
             
         }
     }
-}
+
 
 struct CustomTextSection: View {
     

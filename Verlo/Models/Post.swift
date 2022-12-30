@@ -15,11 +15,11 @@ struct Post: Identifiable, Hashable, Codable {
 //    @ServerTimestamp var created: Date?
     var title: String
     var locationText: String
-//    var lattitude: Double
-//    var longitude: Double
-//    var coordinates: CLLocationCoordinate2D {
-//        CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
-//    }
+    var lattitude: Double
+    var longitude: Double
+    var coordinates: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
+    }
 //    var images: [String]
     var dateEvent: Date
            var dateString: String {

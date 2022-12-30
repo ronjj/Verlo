@@ -26,6 +26,10 @@
 		54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD491E29466104000ABF46 /* CustomTabBarContainerView.swift */; };
 		54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49202946645B000ABF46 /* TabBarItemsPreferenceKey.swift */; };
 		54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4922294667C1000ABF46 /* TabBarItem.swift */; };
+		54DF0DD2295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD1295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift */; };
+		54DF0DD4295F5BF700DD3DDA /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD3295F5BF700DD3DDA /* LocationPicker.swift */; };
+		54DF0DD6295F5C1A00DD3DDA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD5295F5C1A00DD3DDA /* MapView.swift */; };
+		54DF0DD8295F5C4A00DD3DDA /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF0DD7295F5C4A00DD3DDA /* VisualEffectView.swift */; };
 		54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB4294133A20018D353 /* VerloApp.swift */; };
 		54E6CDB7294133A20018D353 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6CDB6294133A20018D353 /* HomeView.swift */; };
 		54E6CDB9294133A30018D353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54E6CDB8294133A30018D353 /* Assets.xcassets */; };
@@ -49,6 +53,10 @@
 		54BD491E29466104000ABF46 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
 		54BD49202946645B000ABF46 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
 		54BD4922294667C1000ABF46 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		54DF0DD1295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+toString.swift"; sourceTree = "<group>"; };
+		54DF0DD3295F5BF700DD3DDA /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
+		54DF0DD5295F5C1A00DD3DDA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		54DF0DD7295F5C4A00DD3DDA /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		54E6CDB1294133A20018D353 /* Verlo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verlo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E6CDB4294133A20018D353 /* VerloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerloApp.swift; sourceTree = "<group>"; };
 		54E6CDB6294133A20018D353 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -103,6 +111,17 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		54DF0DD0295F5BA700DD3DDA /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				54DF0DD1295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift */,
+				54DF0DD3295F5BF700DD3DDA /* LocationPicker.swift */,
+				54DF0DD5295F5C1A00DD3DDA /* MapView.swift */,
+				54DF0DD7295F5C4A00DD3DDA /* VisualEffectView.swift */,
+			);
+			path = LocationPicker;
+			sourceTree = "<group>";
+		};
 		54E6CDA8294133A20018D353 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +165,7 @@
 		54F28CF329452C06003E737A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				54DF0DD0295F5BA700DD3DDA /* LocationPicker */,
 				54BD491B29465E3F000ABF46 /* TabBar */,
 				54E6CDB6294133A20018D353 /* HomeView.swift */,
 				54BD4912294650CA000ABF46 /* ProfileView.swift */,
@@ -268,12 +288,15 @@
 			files = (
 				54BD49172946514F000ABF46 /* TabView.swift in Sources */,
 				54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */,
+				54DF0DD8295F5C4A00DD3DDA /* VisualEffectView.swift in Sources */,
 				54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */,
 				5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */,
+				54DF0DD2295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift in Sources */,
 				54BD491D29465E53000ABF46 /* CustomTabBarView.swift in Sources */,
 				541766C1295DFB6400607F69 /* SettingsView.swift in Sources */,
 				54E6CDB7294133A20018D353 /* HomeView.swift in Sources */,
 				54E6CDB5294133A20018D353 /* VerloApp.swift in Sources */,
+				54DF0DD4295F5BF700DD3DDA /* LocationPicker.swift in Sources */,
 				54BD491A294657B2000ABF46 /* ColorsExtension.swift in Sources */,
 				54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */,
 				54F28CF729452C23003E737A /* Post.swift in Sources */,
@@ -281,6 +304,7 @@
 				54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */,
 				54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */,
 				54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */,
+				54DF0DD6295F5C1A00DD3DDA /* MapView.swift in Sources */,
 				54F28CFA29452FF3003E737A /* MockData.swift in Sources */,
 				54F28CFE294535F6003E737A /* PostListRowView.swift in Sources */,
 			);
