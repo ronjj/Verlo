@@ -47,29 +47,21 @@ struct CreatePostView: View {
     @State var presentActionSheet = false
 
     
-    
-    
-    var saveButton: some View {
-        Button(action: { self.handleDoneTapped() }) {
-            Text(mode == .new ? "Done" : "Save")
-        }
-        .disabled(!viewModel.modified)
-    }
-    
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 10){
                     Group {
-                        TitleTextSection(sectionTitle: "title", placeholderText: "post title")
-                        LocationTextSection(sectionTitle: "approximate location", placeholderText: "general location of photos")
+                        titleTextField
+                        locationTextField
                         photoSection
                         mapSection
                     }
                     .padding(.horizontal)
                     
                     createOrModifyButton
+                        .disabled(!viewModel.modified)
+//                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty)
                     
                     if mode == .edit {
                         Button {
@@ -207,6 +199,38 @@ extension CreatePostView {
         
     }
     
+    private var titleTextField: some View {
+        VStack(alignment: .leading) {
+            Text("title")
+                .font(.headline)
+                .fontWeight(.bold)
+            TextField("post title", text: $viewModel.post.title)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .foregroundColor(.secondary)
+            
+            CharactersRemainView(currentCount: viewModel.post.title.count)
+            
+            Divider()
+        }
+    }
+    
+    private var locationTextField: some View {
+        VStack(alignment: .leading) {
+            Text("approximate location")
+                .font(.headline)
+                .fontWeight(.bold)
+            TextField("general location of photos", text: $viewModel.post.locationText)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .foregroundColor(.secondary)
+            
+            CharactersRemainView(currentCount: viewModel.post.locationText.count)
+            
+            Divider()
+        }
+    }
+    
     private var mapCloseButton: some View {
         Button {
             self.showLocationPicker.toggle()
@@ -223,6 +247,9 @@ extension CreatePostView {
         Button {
             self.showLocationPicker.toggle()
             self.saveButtonClicked = true
+            viewModel.post.lattitude = coordinates.latitude
+            viewModel.post.longitude = coordinates.longitude
+            
             
         } label : {
             Text("save")
@@ -278,34 +305,6 @@ extension CreatePostView {
     
     func dismiss() {
         self.presentationMode.wrappedValue.dismiss()
-    }
-}
-
-
-
-
-
-struct TitleTextSection: View {
-    
-    @ObservedObject var viewModel = FirebasePostViewModel()
-    
-    var sectionTitle: String
-    var placeholderText: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(sectionTitle)
-                .font(.headline)
-                .fontWeight(.bold)
-            TextField(placeholderText, text: $viewModel.post.title)
-                .autocapitalization(.none)
-                .autocorrectionDisabled()
-                .foregroundColor(.secondary)
-            
-            CharactersRemainView(currentCount: viewModel.post.title.count)
-            
-            Divider()
-        }
     }
 }
 
