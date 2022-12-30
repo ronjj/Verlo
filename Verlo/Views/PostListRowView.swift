@@ -20,29 +20,11 @@ struct PostListRowView: View {
                 .frame(maxWidth: .infinity)
                 .edgesIgnoringSafeArea(.horizontal)
             HStack{
-                Text("\(post.title)")
-                    .font(.body)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(0.5)
+                leftSideTextInfo
                 
                 Spacer()
                 
-                VStack(alignment: .trailing) {
-                    HStack{
-                        Image(systemName: "mappin")
-                            .font(.body)
-                        Text(post.locationText)
-                            .font(.headline)
-                            .minimumScaleFactor(0.7)
-                            .multilineTextAlignment(.trailing)
-                        
-                    }
-                    Text("posted \(post.dateString) @ \(post.timeString)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .minimumScaleFactor(0.7)
-                        .multilineTextAlignment(.leading)
-                }
+                rightSideTextInfo
             }
             .padding(.horizontal, 5)
             
@@ -53,3 +35,30 @@ struct PostListRowView: View {
     }
 }
 
+extension PostListRowView {
+    private var rightSideTextInfo: some View {
+        VStack(alignment: .trailing) {
+            HStack{
+                Image(systemName: "mappin")
+                    .font(.body)
+                Text(post.locationText)
+                    .font(.headline)
+                    .minimumScaleFactor(0.7)
+                    .multilineTextAlignment(.trailing)
+                
+            }
+            Text("posted \(post.dateString) @ \(post.timeString)")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .minimumScaleFactor(0.7)
+                .multilineTextAlignment(.leading)
+        }
+    }
+    
+    private var leftSideTextInfo: some View {
+        Text("\(post.title)")
+            .font(.body)
+            .multilineTextAlignment(.leading)
+            .minimumScaleFactor(0.5)
+    }
+}

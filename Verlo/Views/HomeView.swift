@@ -11,11 +11,11 @@ import FirebaseFirestore
 
 struct HomeView: View {
     
+    //Env object for using dummy data
   //  @EnvironmentObject private var vm: PostViewModel
     
     @State private var isAddingView = false
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
-    //TODO: Switch out vm.posts for just posts in code.
 
     var body: some View {
         NavigationView{
@@ -30,7 +30,6 @@ struct HomeView: View {
                 .scrollIndicators(.hidden)
             }
             
-            //Code to give 2 line tab bar in SwiftUI
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     verloAtLocationText
