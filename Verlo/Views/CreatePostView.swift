@@ -40,12 +40,11 @@ struct CreatePostView: View {
     let columns = [GridItem(.adaptive(minimum: 100))]
     
     //Old Firebase
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var viewModel = FirebasePostViewModel()
+    @State var presentActionSheet = false
     var mode: Mode = .new
     var completionHandler: ((Result<Action, Error>) -> Void)?
-    @Environment(\.presentationMode) private var presentationMode
-    @State var presentActionSheet = false
-
     
     var body: some View {
         NavigationView {
@@ -56,12 +55,23 @@ struct CreatePostView: View {
                         locationTextField
                         photoSection
                         mapSection
+                        
                     }
                     .padding(.horizontal)
                     
                     createOrModifyButton
-                        .disabled(!viewModel.modified)
-//                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty)
+                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked)
+//                    """
+//                    Disabled if:
+//                    - title is empty
+//                    - location is empty
+//                    - title is over 30 characters
+//                    - location is over 30 characters
+//                    - no photos are selected
+//                    - no coordinates are selected
+                    // Eventuslly switch this to show an error with the corresponding issue
+//                    """
+                       
                     
                     if mode == .edit {
                         Button {
