@@ -118,6 +118,8 @@ struct CreatePostView: View {
 
 
 extension CreatePostView {
+    
+    //MARK: Navigation
     private var backArrowButton: some View {
         Button {
             isAddingView = false
@@ -129,6 +131,31 @@ extension CreatePostView {
                 Image(systemName: "arrow.left")
                     .foregroundColor(.verloGreen)
             }
+        }
+    }
+    
+    private var createOrModifyButton: some View {
+        Button {
+            self.handleDoneTapped()
+        } label: {
+            Text(mode == .new ? "create post" : "save changes")
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.green)
+        .frame(width: UIScreen.main.bounds.width)
+        .padding()
+    }
+    
+    //MARK: Photos
+    private var photoSection: some View {
+        VStack(alignment: .leading, spacing: 5){
+            Text("photos")
+                .font(.headline)
+                .fontWeight(.bold)
+            addPhotosButton
+            selectedImagesGrid
+            Divider()
+            
         }
     }
     
@@ -149,20 +176,6 @@ extension CreatePostView {
          .tint(imagePicker.images.isEmpty ? .red : .orange)
     }
     
-    private var noImagesSelected: some View {
-        HStack{
-            Image(systemName: "photo.on.rectangle.angled")
-            Text("tap to select up to 10 images:")
-        }
-    }
-    
-    private var editImagesSelected: some View {
-        HStack{
-            Image(systemName: "square.and.pencil")
-            Text("edit selected images")
-        }
-    }
-    
     private var selectedImagesGrid: some View {
         VStack {
             if !imagePicker.images.isEmpty {
@@ -181,7 +194,7 @@ extension CreatePostView {
                                 }
                         }
                     }
-                    .padding(.top)
+                    .padding(.vertical)
                 }
             }
 //            else {
@@ -191,18 +204,34 @@ extension CreatePostView {
         }
     }
     
-    private var photoSection: some View {
-        VStack(alignment: .leading){
-            Text("photos")
-                .font(.headline)
-                .fontWeight(.bold)
-            addPhotosButton
-            selectedImagesGrid
-            Divider()
+    
+    private var redXMarkButton: some View {
+        ZStack{
+            Circle()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.red)
+            Image(systemName: "xmark")
+                .font(.caption)
+                .foregroundColor(.white)
             
         }
     }
     
+    private var noImagesSelected: some View {
+        HStack{
+            Image(systemName: "photo.on.rectangle.angled")
+            Text("tap to select up to 10 images:")
+        }
+    }
+    
+    private var editImagesSelected: some View {
+        HStack{
+            Image(systemName: "square.and.pencil")
+            Text("edit selected images")
+        }
+    }
+    
+    //MARK: Map
     private var mapSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("map location")
@@ -230,7 +259,6 @@ extension CreatePostView {
                     .aspectRatio(contentMode: .fill)
                     .cornerRadius(30)
                     .allowsHitTesting(false)
-                    
             }
         }
         .frame(maxWidth: .infinity)
@@ -247,38 +275,6 @@ extension CreatePostView {
         HStack{
             Image(systemName: "map")
             Text("tap to select a location:")
-        }
-    }
-    
-    private var titleTextField: some View {
-        VStack(alignment: .leading) {
-            Text("title")
-                .font(.headline)
-                .fontWeight(.bold)
-            TextField("post title", text: $viewModel.post.title)
-                .autocapitalization(.none)
-                .autocorrectionDisabled()
-                .foregroundColor(.secondary)
-            
-            CharactersRemainView(currentCount: viewModel.post.title.count)
-            
-            Divider()
-        }
-    }
-    
-    private var locationTextField: some View {
-        VStack(alignment: .leading) {
-            Text("approximate location")
-                .font(.headline)
-                .fontWeight(.bold)
-            TextField("general location of photos", text: $viewModel.post.locationText)
-                .autocapitalization(.none)
-                .autocorrectionDisabled()
-                .foregroundColor(.secondary)
-            
-            CharactersRemainView(currentCount: viewModel.post.locationText.count)
-            
-            Divider()
         }
     }
     
@@ -316,27 +312,39 @@ extension CreatePostView {
             .background(.ultraThinMaterial)
     }
     
-    private var createOrModifyButton: some View {
-        Button {
-            self.handleDoneTapped()
-        } label: {
-            Text(mode == .new ? "create post" : "save changes")
+    //MARK: Title
+    
+    private var titleTextField: some View {
+        VStack(alignment: .leading) {
+            Text("title")
+                .font(.headline)
+                .fontWeight(.bold)
+            TextField("post title", text: $viewModel.post.title)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .foregroundColor(.secondary)
+            
+            CharactersRemainView(currentCount: viewModel.post.title.count)
+            
+            Divider()
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.green)
-        .frame(width: UIScreen.main.bounds.width)
-        .padding()
     }
     
-    private var redXMarkButton: some View {
-        ZStack{
-            Circle()
-                .frame(width: 25, height: 25)
-                .foregroundColor(.red)
-            Image(systemName: "xmark")
-                .font(.caption)
-                .foregroundColor(.white)
+    //MARK: Location Text
+
+    private var locationTextField: some View {
+        VStack(alignment: .leading) {
+            Text("approximate location")
+                .font(.headline)
+                .fontWeight(.bold)
+            TextField("general location of photos", text: $viewModel.post.locationText)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .foregroundColor(.secondary)
             
+            CharactersRemainView(currentCount: viewModel.post.locationText.count)
+            
+            Divider()
         }
     }
     
@@ -383,29 +391,28 @@ struct LocationTextSection: View {
             Divider()
         }
     }
-    
 }
     
-    struct CharactersRemainView: View {
+struct CharactersRemainView: View {
         
-        var currentCount: Int
-        
-        var body: some View {
-            //            Text("Characters Remaining: ")
-            //                .font(.callout)
-            //                .foregroundColor(.secondary)
-            //                +
-            Text("\(30 - currentCount)")
-                .bold()
-                .font(.callout)
-                .foregroundColor(currentCount <= 30 ? .green : Color(.systemPink))
-            +
-            Text(" characters remain")
-                .font(.callout)
-                .foregroundColor(.secondary)
-        }
-    }
+    var currentCount: Int
     
+    var body: some View {
+        //            Text("Characters Remaining: ")
+        //                .font(.callout)
+        //                .foregroundColor(.secondary)
+        //                +
+        Text("\(30 - currentCount)")
+            .bold()
+            .font(.callout)
+            .foregroundColor(currentCount <= 30 ? .green : Color(.systemPink))
+        +
+        Text(" characters remain")
+            .font(.callout)
+            .foregroundColor(.secondary)
+    }
+}
+
 
     
     
