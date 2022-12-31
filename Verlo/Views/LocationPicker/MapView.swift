@@ -93,11 +93,15 @@ struct DetailedMapView: UIViewRepresentable {
         //MARK: Show Compass
         mapView.showsCompass = false // hides current compass, which shows only on map turning
         let compassBtn = MKCompassButton(mapView: mapView)
-        compassBtn.frame.origin = CGPoint(x: 20, y: 20) // you may use GeometryReader to replace it's position
+        compassBtn.frame.origin = CGPoint(x: 20, y: 40) // you may use GeometryReader to replace it's position
         compassBtn.compassVisibility = .visible // compass will always be on map
         mapView.addSubview(compassBtn)
-
         
+        //MARK: Show Scale
+        mapView.showsScale = true
+        
+        
+
         return mapView
     }
 
