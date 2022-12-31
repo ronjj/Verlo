@@ -240,6 +240,7 @@ extension CreatePostView {
             
             Button {
                 self.showLocationPicker.toggle()
+                
             } label: {
                 HStack{
                     if saveButtonClicked {

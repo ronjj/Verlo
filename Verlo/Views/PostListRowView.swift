@@ -45,13 +45,13 @@ extension PostListRowView {
             HStack{
                 Image(systemName: "mappin")
                     .font(.body)
-                Text(post.locationText)
+                Text(post.locationText.lowercased())
                     .font(.headline)
                     .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.trailing)
                 
             }
-            Text("posted \(post.dateString) @ \(post.timeString)")
+            Text("posted \(post.dateString.lowercased()) @ \(post.timeString)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .minimumScaleFactor(0.7)
@@ -60,7 +60,7 @@ extension PostListRowView {
     }
     
     private var leftSideTextInfo: some View {
-        Text("\(post.title)")
+        Text("\(post.title.lowercased())")
             .font(.body)
             .multilineTextAlignment(.leading)
             .minimumScaleFactor(0.5)

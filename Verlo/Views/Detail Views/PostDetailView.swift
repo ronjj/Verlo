@@ -70,13 +70,13 @@ extension PostDetailView {
             HStack{
                 Image(systemName: "mappin")
                     .font(.body)
-                Text(post.locationText)
+                Text(post.locationText.lowercased())
                     .font(.headline)
                     .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.trailing)
                 
             }
-            Text(post.fullDateAndTimeString)
+            Text(post.fullDateAndTimeString.lowercased())
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .minimumScaleFactor(0.7)
@@ -85,7 +85,7 @@ extension PostDetailView {
     }
     
     private var leftSideTextInfo: some View {
-        Text("\(post.title)")
+        Text("\(post.title.lowercased())")
             .font(.body)
             .multilineTextAlignment(.leading)
             .minimumScaleFactor(0.5)
