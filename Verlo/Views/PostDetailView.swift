@@ -7,12 +7,17 @@
 
 import SwiftUI
 import MapKit
+import FirebaseFirestoreSwift
 
 struct PostDetailView: View {
     
     var post: Post
     
     @State var likeTapped: Bool = false
+    @State var mapDetailSelected: Bool = false
+    
+    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+
     
     var body: some View {
         ZStack {
@@ -35,12 +40,21 @@ struct PostDetailView: View {
                     mapSection
                     
                 }
+                
                 .navigationTitle(post.title)
                 .navigationBarTitleDisplayMode(.inline)
+                //TODO: Add sheet for mapDetailSelected
             }
+            
+        }
+        .sheet(isPresented: $mapDetailSelected) {
+            MapDetailView(post: post, mapDetailSelected: $mapDetailSelected)
         }
     }
 }
+
+
+
 
 extension PostDetailView {
     
@@ -83,8 +97,6 @@ extension PostDetailView {
     private var mapSection: some View {
         VStack{
             HStack{
-                Spacer()
-                
                 Button {
                     likeTapped.toggle()
                 } label : {
@@ -99,13 +111,62 @@ extension PostDetailView {
                     Image(systemName: "square.and.arrow.up")
                         .font(.title2)
                 }
+                
+                Spacer()
             }
             .padding(.horizontal)
             
-            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))))
+            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: posts) { post in
+                MapMarker(coordinate: post.coordinates)
+            }
                 .aspectRatio(1, contentMode: .fit)
                 .cornerRadius(30)
                 .padding(.horizontal)
+                .overlay(alignment: .topTrailing) {
+                    mapDetailViewButton
+                        .offset(x: -10)
+                }
+        }
+    }
+    
+    private var mapDetailViewButton: some View {
+        Button {
+            mapDetailSelected.toggle()
+        } label: {
+            Image(systemName: "arrow.up.backward.and.arrow.down.forward.circle.fill")
+                .font(.headline)
+                .padding(16)
+                .foregroundColor(.primary)
+                .background(.thickMaterial)
+                .cornerRadius(10)
+                .shadow(radius: 4)
+                .padding()
+                .rotationEffect(Angle(degrees: 270))
         }
     }
 }
+
+struct MapDetailView: View {
+    
+    var post: Post
+    
+    @Binding var mapDetailSelected: Bool
+    
+    var body: some View {
+        VStack {
+            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))))
+                .edgesIgnoringSafeArea(.all)
+                .overlay(alignment: .topTrailing) {
+                    Button {
+                        mapDetailSelected.toggle()
+                    } label : {
+                        Text("close")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.red)
+                    .padding()
+                }
+        }
+    }
+}
+

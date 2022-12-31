@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import FirebaseFirestore
 import FirebaseFirestoreSwift
 import MapKit
 
@@ -39,7 +38,10 @@ struct CreatePostView: View {
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
     
-    //Old Firebase
+    //New Firebase 10.0 - For Pulling Posts
+    @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+
+    //Old Firebase - For Creating Posts and Adding to Collection
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var viewModel = FirebasePostViewModel()
     @State var presentActionSheet = false
@@ -199,7 +201,9 @@ extension CreatePostView {
             .tint(saveButtonClicked ? .green : .red)
             
             if saveButtonClicked {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))))
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: posts) { post in
+                    MapMarker(coordinate: coordinates)
+                }
                     .aspectRatio(contentMode: .fill)
                     .cornerRadius(30)
                     .allowsHitTesting(false)

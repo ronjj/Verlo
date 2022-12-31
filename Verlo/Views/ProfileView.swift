@@ -13,6 +13,7 @@ import GoogleSignIn
 struct ProfileView: View {
     
     @AppStorage("log_status") var logStatus: Bool = false
+    
     var body: some View {
         
         //1. fetch list of saved posts
