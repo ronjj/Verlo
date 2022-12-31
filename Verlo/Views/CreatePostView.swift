@@ -111,7 +111,7 @@ struct CreatePostView: View {
                 }
                 .sheet(isPresented: $showLocationPicker) {
                     NavigationView {
-                        LocationPicker(instructions: "tap somewhere to select your coordinates", coordinates: $coordinates)
+                        LocationPicker(instructions: "tap somewhere to select your location", coordinates: $coordinates)
                             .navigationTitle("select location")
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarItems(leading: mapCloseButton, trailing: mapSaveButton)

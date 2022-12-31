@@ -25,7 +25,7 @@ class FirebasePostViewModel: ObservableObject {
   
   // MARK: - Constructors
   
-    init(post: Post = Post(title: "", locationText: "", lattitude: 0.0, longitude: 0.0, dateEvent: Date())) {
+    init(post: Post = Post(title: "", locationText: "", lattitude: 0.0, longitude: 0.0, pictures: [], dateEvent: Date())) {
     self.post = post
     
     self.$post

@@ -21,7 +21,7 @@ public struct LocationPicker: View {
     @Binding var coordinates: CLLocationCoordinate2D
 
 
-    @State var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    @State var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
     @State private var alert = (false, "")
     let dismissOnSelection: Bool
     

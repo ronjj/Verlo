@@ -16,6 +16,7 @@ struct Post: Identifiable, Hashable, Codable {
     var locationText: String
     var lattitude: Double
     var longitude: Double
+    var pictures: [String]
     var coordinates: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
     }
