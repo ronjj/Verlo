@@ -82,6 +82,8 @@ struct DetailedMapView: UIViewRepresentable {
     
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var span: MKCoordinateSpan
+    @Binding var defaultMapType: MKMapType
+    @Binding var switchMapType: Bool
 
     let mapView = MKMapView()
 
@@ -93,21 +95,31 @@ struct DetailedMapView: UIViewRepresentable {
         //MARK: Show Compass
         mapView.showsCompass = false // hides current compass, which shows only on map turning
         let compassBtn = MKCompassButton(mapView: mapView)
-        compassBtn.frame.origin = CGPoint(x: 20, y: 40) // you may use GeometryReader to replace it's position
+        compassBtn.frame.origin = CGPoint(x: 20, y: 50) // you may use GeometryReader to replace it's position
         compassBtn.compassVisibility = .visible // compass will always be on map
         mapView.addSubview(compassBtn)
         
         //MARK: Show Scale
-        mapView.showsScale = true
+        let scale = MKScaleView(mapView: mapView)
+        scale.scaleVisibility = .visible
+        scale.frame.origin = CGPoint(x: 20, y: 20)
+        mapView.addSubview(scale)
         
-        
+        //MARK: Switching Map Types
+        if switchMapType {
+            mapView.mapType = .hybrid
+        } else {
+            mapView.mapType = .standard
+        }
+
 
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
         view.centerCoordinate = self.centerCoordinate
-
+        view.mapType = self.defaultMapType
+        
     }
 }
 

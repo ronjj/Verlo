@@ -17,7 +17,7 @@ struct PostDetailView: View {
     @State var mapDetailSelected: Bool = false
     
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
-
+    
     var body: some View {
         ZStack {
             Color.verloGreen
@@ -118,13 +118,13 @@ extension PostDetailView {
             Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: posts) { post in
                 MapMarker(coordinate: post.coordinates)
             }
-                .aspectRatio(1, contentMode: .fit)
-                .cornerRadius(30)
-                .padding(.horizontal)
-                .overlay(alignment: .topTrailing) {
-                    mapDetailViewButton
-                        .offset(x: -10)
-                }
+            .aspectRatio(1, contentMode: .fit)
+            .cornerRadius(30)
+            .padding(.horizontal)
+            .overlay(alignment: .topTrailing) {
+                mapDetailViewButton
+                    .offset(x: -10)
+            }
         }
     }
     
@@ -150,21 +150,58 @@ struct MapDetailView: View {
     var post: Post
     
     @Binding var mapDetailSelected: Bool
+    
     @State private var coordinates = CLLocationCoordinate2D(latitude: 42.449317, longitude: -76.484366)
     @State private var mapSpan = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
+    @State private var defaultMapType: MKMapType = .standard
+    @State private var switchMapType: Bool = false
     
     var body: some View {
         VStack {
-            DetailedMapView(centerCoordinate: $coordinates, span: $mapSpan)
+            DetailedMapView(centerCoordinate: $coordinates, span: $mapSpan, defaultMapType: $defaultMapType, switchMapType: $switchMapType)
                 .overlay(alignment: .topTrailing) {
-                    Button {
-                        mapDetailSelected.toggle()
-                    } label : {
-                        Text("close")
+                    VStack{
+                        Button {
+                            mapDetailSelected.toggle()
+                        } label : {
+                            Text("close")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.red)
+                        .padding()
+                        
+                        Button {
+                            switchMapType.toggle()
+                            
+                            if switchMapType {
+                                defaultMapType = .hybrid
+                            }
+                            
+                            if !switchMapType{
+                                defaultMapType = .standard
+                            }
+                        } label : {
+                            if defaultMapType == .standard {
+                                Image(systemName: "globe.americas")
+                                    .font(.title2)
+                                    .padding(16)
+                                    .foregroundColor(.primary)
+                                    .background(.thickMaterial)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 4)
+                                    .padding()
+                            } else {
+                                Image(systemName: "pencil.and.outline")
+                                    .font(.title2)
+                                    .padding(16)
+                                    .foregroundColor(.primary)
+                                    .background(.thickMaterial)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 4)
+                                    .padding()
+                            }
+                        }
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.red)
-                    .padding()
                 }
         }
         .onAppear {
