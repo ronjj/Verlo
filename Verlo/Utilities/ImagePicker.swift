@@ -6,15 +6,19 @@
 // Tweaked and modified by Ronald Jabouin
 
 import SwiftUI
+import UIKit
 import PhotosUI
 import FirebaseStorage
 
 @MainActor
 class ImagePicker: ObservableObject {
-    
+
     @Published var image: Image?
     @Published var images: [Image] = []
     
+    @Published var uiImage: UIImage?
+    @Published var uiImages: [UIImage] = []
+
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
             if let imageSelection {
@@ -24,23 +28,24 @@ class ImagePicker: ObservableObject {
             }
         }
     }
-    
+
     @Published var imageSelections: [PhotosPickerItem] = [] {
         didSet {
             Task {
                 if !imageSelections.isEmpty {
                     try await loadTransferable(from: imageSelections)
-//                    imageSelections = []
+                        imageSelections = []
                 }
             }
         }
     }
-    
+
     func loadTransferable(from imageSelection: PhotosPickerItem?) async throws {
         do {
             if let data = try await imageSelection?.loadTransferable(type: Data.self) {
                 if let uiImage = UIImage(data: data) {
                     self.image = Image(uiImage: uiImage)
+                    self.uiImage = uiImage
                 }
             }
         } catch {
@@ -48,13 +53,14 @@ class ImagePicker: ObservableObject {
             image = nil
         }
     }
-    
+
     func loadTransferable(from imageSelections: [PhotosPickerItem]) async throws {
         do {
             for imageSelection in imageSelections {
                 if let data = try await imageSelection.loadTransferable(type: Data.self) {
                     if let uiImage = UIImage(data: data) {
                             self.images.append(Image(uiImage: uiImage))
+                            self.uiImages.append(uiImage)
                     }
                 }
             }
@@ -62,35 +68,39 @@ class ImagePicker: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    
-//    func uploadPhotos() async throws {
-//        //Create storage reference
-//        let storageRef = Storage.storage().reference()
-//
-//        //TODO: Need to turn images into data
-//        for image in images {
-//            if let image = UIImage(data: image) {
-//                print("...")
-//            }
+
+    func uploadPhotos() {
+
+        //Storage reference
+        let storageRef = Storage.storage().reference()
+        
+        //Turning image into data
+//        for picture in uiImages {
+//            let imageData = picture.jpegData(compressionQuality: 0.8)
 //        }
-//
-//        //Specifiy file path and name
-//        //Might have issue because not all images are jpgs
-//        let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
-//
-//        //Upload the data
-//        let uploadTask = fileRef.putData(images, metadata: nil) { metadata,
-//            error in
-//
-//            if error == nil && metadata != nil {
-//                //save a reference to the file in firestore DB
-//            }
-//        }
-//
-//        //Save a refernece to the file in Firestore DB
-//    }
-//
+        let imageData = uiImage?.jpegData(compressionQuality: 0.8)
+        
+        //Check that image data was converted
+        guard imageData != nil else {
+            return
+        }
+        
+        //Specify file path and name
+        let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
+        
+        //force unwrapping because i guarded the data above
+        let uploadTask = fileRef.putData(imageData!, metadata: nil) {
+            metadata, error in
+            
+            if error == nil && metadata != nil {
+                
+            }
+        }
+    }
+
     func removePhoto(index: Int) {
         images.remove(at: index)
     }
 }
+
+

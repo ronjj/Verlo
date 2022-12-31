@@ -15,6 +15,7 @@ struct HomeView: View {
     
     @State private var isAddingView = false
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
+    
 
     var body: some View {
         NavigationView{

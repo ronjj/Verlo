@@ -143,6 +143,7 @@ extension CreatePostView {
     private var createOrModifyButton: some View {
         Button {
             self.handleDoneTapped()
+            imagePicker.uploadPhotos()
         } label: {
             Text(mode == .new ? "create post" : "save changes")
         }
@@ -159,6 +160,7 @@ extension CreatePostView {
                 .font(.headline)
                 .fontWeight(.bold)
             addPhotosButton
+            addPhotosButtonSingular
             selectedImagesGrid
             Divider()
             
@@ -180,6 +182,16 @@ extension CreatePostView {
         }
          .buttonStyle(.bordered)
          .tint(imagePicker.images.isEmpty ? .red : .orange)
+    }
+    
+    private var addPhotosButtonSingular: some View {
+        PhotosPicker(selection: $imagePicker.imageSelection,
+                     matching: .images,
+                     photoLibrary: .shared()) {
+
+        }
+         .buttonStyle(.bordered)
+//         .tint(imagePicker.images.isEmpty ? .red : .orange)
     }
     
     private var selectedImagesGrid: some View {
@@ -409,7 +421,6 @@ struct CharactersRemainView: View {
             .foregroundColor(.secondary)
     }
 }
-
 
     
     
