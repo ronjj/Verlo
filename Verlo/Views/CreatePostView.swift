@@ -261,7 +261,7 @@ extension CreatePostView {
                     .allowsHitTesting(false)
             }
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private var editMapSelection: some View {
