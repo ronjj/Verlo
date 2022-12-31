@@ -34,7 +34,6 @@ struct VerloApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                AppTabBarView()
                 ContentView()
                     .environmentObject(vm)
             }

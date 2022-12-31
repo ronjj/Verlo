@@ -61,36 +61,61 @@ extension UIApplication {
 }
 struct LoginView: View {
     
-    
     @StateObject var loginModel: LoginViewModel = .init()
     
     var body: some View {
         VStack {
-            Button{
-                
-            } label: {
-                Text("button")
-            }
-                    if let clientID = FirebaseApp.app()?.options.clientID {
-                        GoogleSignInButton{
-                            GIDSignIn.sharedInstance.signIn(with: .init(clientID: clientID), presenting: UIApplication.shared.getRootViewController()){user, error in
-                                if let error = error {
-                                    print(error.localizedDescription)
-                                    return
-                                    
-                                }
+            googleLoginButton
+            .overlay {
+                if let clientID = FirebaseApp.app()?.options.clientID {
+                    GoogleSignInButton{
+                        GIDSignIn.sharedInstance.signIn(with: .init(clientID: clientID), presenting: UIApplication.shared.getRootViewController()){user, error in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                return
                                 
-                                if let user {
-                                    loginModel.logGoogleUser(user: user)
-                                }
-                                
+                            }
+                            
+                            if let user {
+                                        loginModel.logGoogleUser(user: user)
+
                             }
                         }
                     }
-            
+                }
+            }
+
         }
     }
 }
 
+extension LoginView {
+    private var googleLoginButton: some View {
+        HStack(spacing: 8) {
+            HStack {
+                Image(systemName: "google-icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 25, height: 25)
+                    .frame(height: 45)
+                
+                Text("Google Sign In")
+                    .font(.callout)
+                    .lineLimit(1)
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal, 15)
+            .background {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(.black)
+            }
+            .overlay {
+                
+            }
+            .clipped()
+        }
+
+    }
+}
 
 
