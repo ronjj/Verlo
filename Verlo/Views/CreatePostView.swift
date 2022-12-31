@@ -63,6 +63,12 @@ struct CreatePostView: View {
                     
                     createOrModifyButton
                         .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked)
+                    
+                    if viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked {
+
+                        Label("all fields must be completed before posting", systemImage: "exclamationmark.triangle")
+                            .foregroundColor(.red)
+                    }
 //                    """
 //                    Disabled if:
 //                    - title is empty
@@ -218,17 +224,13 @@ extension CreatePostView {
     }
     
     private var noImagesSelected: some View {
-        HStack{
-            Image(systemName: "photo.on.rectangle.angled")
-            Text("tap to select up to 10 images:")
-        }
+        Label("tap to select up to 10 images:", systemImage: "photo.on.rectangle.angled")
+
     }
     
     private var editImagesSelected: some View {
-        HStack{
-            Image(systemName: "square.and.pencil")
-            Text("edit selected images")
-        }
+        Label("edit selected images", systemImage: "square.and.pencil")
+
     }
     
     //MARK: Map
@@ -266,17 +268,11 @@ extension CreatePostView {
     }
     
     private var editMapSelection: some View {
-        HStack{
-            Image(systemName: "square.and.pencil")
-            Text("edit selection:")
-        }
+        Label("edit selection:", systemImage: "square.and.pencil")
     }
     
     private var chooseMapSelection: some View {
-        HStack{
-            Image(systemName: "map")
-            Text("tap to select a location:")
-        }
+        Label("tap to select a location:", systemImage: "map")
     }
     
     private var mapCloseButton: some View {
