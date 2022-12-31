@@ -15,7 +15,7 @@ struct MapDetailView: View {
     
     @Binding var mapDetailSelected: Bool
     
-    @State private var coordinates = CLLocationCoordinate2D(latitude: 42.449317, longitude: -76.484366)
+    @State private var coordinates = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     @State private var mapSpan = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
     @State private var defaultMapType: MKMapType = .standard
     @State private var switchMapType: Bool = false
