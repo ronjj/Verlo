@@ -66,13 +66,13 @@ public struct LocationPicker: View {
                     
                 Spacer()
                 
-                //Code to see coordinates in the location picker
-                Text("\(coordinates.latitude), \(coordinates.longitude)")
-                    .padding()
-                    .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))
-                    .onTapGesture {
-                        UIPasteboard.general.setValue("\(coordinates.latitude), \(coordinates.longitude)", forPasteboardType: kUTTypePlainText as String)
-                    }
+                //MARK: Code to see coordinates in the location picker
+//                Text("\(coordinates.latitude), \(coordinates.longitude)")
+//                    .padding()
+//                    .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))
+//                    .onTapGesture {
+//                        UIPasteboard.general.setValue("\(coordinates.latitude), \(coordinates.longitude)", forPasteboardType: kUTTypePlainText as String)
+//                    }
                 
             }.padding()
             

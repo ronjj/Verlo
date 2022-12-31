@@ -138,12 +138,12 @@ extension CreatePostView {
                      matching: .images,
                      photoLibrary: .shared()) {
             HStack{
-                Text("select photos")
                 Image(systemName: "photo.on.rectangle.angled")
-                    .imageScale(.large)
-                    .tint(.red)
+                Text("tap to select photos:")
             }
         }
+         .buttonStyle(.bordered)
+         .tint(.red)
     }
     
     private var selectedImagesGrid: some View {
@@ -166,9 +166,11 @@ extension CreatePostView {
                     }
                     .padding(.top)
                 }
-            } else {
-                Text("add photos to post.")
             }
+//            else {
+//                Text("no photos selected")
+//                    .foregroundColor(.secondary)
+//            }
         }
     }
     
@@ -185,7 +187,7 @@ extension CreatePostView {
     }
     
     private var mapSection: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("map location")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -194,11 +196,15 @@ extension CreatePostView {
                 self.showLocationPicker.toggle()
             } label: {
                 HStack{
-                    Image(systemName: "map")
-                    Text(saveButtonClicked ? "selected location:" : "tap to select a location")
+                    if saveButtonClicked {
+                        editMapSelection
+                    } else {
+                        chooseMapSelection
+                    }
                 }
             }
-            .tint(saveButtonClicked ? .green : .red)
+            .tint(saveButtonClicked ? .orange : .red)
+            .buttonStyle(.bordered)
             
             if saveButtonClicked {
                 Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: posts) { post in
@@ -211,7 +217,20 @@ extension CreatePostView {
             }
         }
         .frame(maxWidth: .infinity)
-        
+    }
+    
+    private var editMapSelection: some View {
+        HStack{
+            Image(systemName: "square.and.pencil")
+            Text("tap to edit selection:")
+        }
+    }
+    
+    private var chooseMapSelection: some View {
+        HStack{
+            Image(systemName: "map")
+            Text("tap to select a location:")
+        }
     }
     
     private var titleTextField: some View {
@@ -286,8 +305,10 @@ extension CreatePostView {
         } label: {
             Text(mode == .new ? "create post" : "save changes")
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(.borderedProminent)
         .tint(.green)
+        .frame(width: UIScreen.main.bounds.width)
+        .padding()
     }
     
     private var redXMarkButton: some View {
