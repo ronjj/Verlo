@@ -207,6 +207,7 @@ extension CreatePostView {
                     .aspectRatio(contentMode: .fill)
                     .cornerRadius(30)
                     .allowsHitTesting(false)
+                    
             }
         }
         .frame(maxWidth: .infinity)

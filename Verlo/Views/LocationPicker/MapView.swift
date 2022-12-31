@@ -4,7 +4,7 @@
 //
 //  Created by Alessio Rubicini on 13/08/21.
 //  From LocationPickerForSwiftUI on Github
-//  Forked version of MapView.swift from Peter Barth on Github
+//  Forked version of MapView.swift from milkypailes on Github
 //  Tweaked by Ronald Jabouin
 
 import Foundation
@@ -23,7 +23,7 @@ struct MapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.centerCoordinate = self.centerCoordinate
         mapView.region.span = self.span
-
+        
         return mapView
     }
 
@@ -77,3 +77,33 @@ struct MapView: UIViewRepresentable {
         }
     }
 }
+
+struct DetailedMapView: UIViewRepresentable {
+    
+    @Binding var centerCoordinate: CLLocationCoordinate2D
+    @Binding var span: MKCoordinateSpan
+
+    let mapView = MKMapView()
+
+    func makeUIView(context: Context) -> MKMapView {
+        //MARK: Coordinates and Span
+        mapView.centerCoordinate = self.centerCoordinate
+        mapView.region.span = self.span
+        
+        //MARK: Show Compass
+        mapView.showsCompass = false // hides current compass, which shows only on map turning
+        let compassBtn = MKCompassButton(mapView: mapView)
+        compassBtn.frame.origin = CGPoint(x: 20, y: 20) // you may use GeometryReader to replace it's position
+        compassBtn.compassVisibility = .visible // compass will always be on map
+        mapView.addSubview(compassBtn)
+
+        
+        return mapView
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        view.centerCoordinate = self.centerCoordinate
+
+    }
+}
+

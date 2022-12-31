@@ -18,7 +18,6 @@ struct PostDetailView: View {
     
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
 
-    
     var body: some View {
         ZStack {
             Color.verloGreen
@@ -151,11 +150,12 @@ struct MapDetailView: View {
     var post: Post
     
     @Binding var mapDetailSelected: Bool
+    @State private var coordinates = CLLocationCoordinate2D(latitude: 42.449317, longitude: -76.484366)
+    @State private var mapSpan = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
     
     var body: some View {
         VStack {
-            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))))
-                .edgesIgnoringSafeArea(.all)
+            DetailedMapView(centerCoordinate: $coordinates, span: $mapSpan)
                 .overlay(alignment: .topTrailing) {
                     Button {
                         mapDetailSelected.toggle()
@@ -167,6 +167,12 @@ struct MapDetailView: View {
                     .padding()
                 }
         }
+        .onAppear {
+            coordinates.longitude = post.longitude
+            coordinates.latitude = post.lattitude
+        }
     }
 }
+
+
 
