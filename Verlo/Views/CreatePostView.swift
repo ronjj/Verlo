@@ -138,12 +138,29 @@ extension CreatePostView {
                      matching: .images,
                      photoLibrary: .shared()) {
             HStack{
-                Image(systemName: "photo.on.rectangle.angled")
-                Text("tap to select photos:")
+                if imagePicker.images.isEmpty {
+                    noImagesSelected
+                } else {
+                    editImagesSelected
+                }
             }
         }
          .buttonStyle(.bordered)
-         .tint(.red)
+         .tint(imagePicker.images.isEmpty ? .red : .orange)
+    }
+    
+    private var noImagesSelected: some View {
+        HStack{
+            Image(systemName: "photo.on.rectangle.angled")
+            Text("tap to select up to 10 images:")
+        }
+    }
+    
+    private var editImagesSelected: some View {
+        HStack{
+            Image(systemName: "square.and.pencil")
+            Text("edit selected images")
+        }
     }
     
     private var selectedImagesGrid: some View {
@@ -222,7 +239,7 @@ extension CreatePostView {
     private var editMapSelection: some View {
         HStack{
             Image(systemName: "square.and.pencil")
-            Text("tap to edit selection:")
+            Text("edit selection:")
         }
     }
     
