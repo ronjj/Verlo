@@ -117,6 +117,7 @@ extension PostDetailView {
                 MapMarker(coordinate: post.coordinates)
             }
             .aspectRatio(1, contentMode: .fit)
+            .allowsHitTesting(false)
             .cornerRadius(30)
             .padding(.horizontal)
             .overlay(alignment: .topTrailing) {

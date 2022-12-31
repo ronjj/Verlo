@@ -23,54 +23,65 @@ struct MapDetailView: View {
     var body: some View {
         VStack {
             DetailedMapView(centerCoordinate: $coordinates, span: $mapSpan, defaultMapType: $defaultMapType, switchMapType: $switchMapType)
+                .edgesIgnoringSafeArea(.all)
                 .overlay(alignment: .topTrailing) {
                     VStack{
-                        Button {
-                            mapDetailSelected.toggle()
-                        } label : {
-                            Text("close")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
-                        .padding()
+                        closeButton
                         
-                        Button {
-                            switchMapType.toggle()
-                        
-                            if switchMapType {
-                                defaultMapType = .hybrid
-                            }
-                            
-                            if !switchMapType{
-                                defaultMapType = .standard
-                            }
-                        } label : {
-                            if defaultMapType == .standard {
-                                Image(systemName: "globe.americas")
-                                    .font(.title2)
-                                    .padding(16)
-                                    .foregroundColor(.primary)
-                                    .background(.thickMaterial)
-                                    .cornerRadius(10)
-                                    .shadow(radius: 4)
-                                    .padding()
-                            } else {
-                                Image(systemName: "pencil.and.outline")
-                                    .font(.title2)
-                                    .padding(16)
-                                    .foregroundColor(.primary)
-                                    .background(.thickMaterial)
-                                    .cornerRadius(10)
-                                    .shadow(radius: 4)
-                                    .padding()
-                            }
-                        }
+                        switchMapButton
                     }
                 }
         }
         .onAppear {
             coordinates.longitude = post.longitude
             coordinates.latitude = post.lattitude
+        }
+    }
+}
+
+extension MapDetailView {
+    private var closeButton: some View {
+        Button {
+            mapDetailSelected.toggle()
+        } label : {
+            Text("close")
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.red)
+        .padding()
+    }
+    
+    private var switchMapButton: some View {
+        Button {
+            switchMapType.toggle()
+            
+            if switchMapType {
+                defaultMapType = .hybrid
+            }
+            
+            if !switchMapType{
+                defaultMapType = .standard
+            }
+        } label : {
+            if defaultMapType == .standard {
+                Image(systemName: "globe.americas")
+                    .font(.title2)
+                    .padding(16)
+                    .foregroundColor(.primary)
+                    .background(.thickMaterial)
+                    .cornerRadius(10)
+                    .shadow(radius: 4)
+                    .padding()
+            } else {
+                Image(systemName: "pencil.and.outline")
+                    .font(.title2)
+                    .padding(16)
+                    .foregroundColor(.primary)
+                    .background(.thickMaterial)
+                    .cornerRadius(10)
+                    .shadow(radius: 4)
+                    .padding()
+            }
         }
     }
 }
