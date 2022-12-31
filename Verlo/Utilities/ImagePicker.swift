@@ -75,25 +75,31 @@ class ImagePicker: ObservableObject {
         let storageRef = Storage.storage().reference()
         
         //Turning image into data
-//        for picture in uiImages {
-//            let imageData = picture.jpegData(compressionQuality: 0.8)
-//        }
-        let imageData = uiImage?.jpegData(compressionQuality: 0.8)
+        var imageData: [Data] = []
+                
+        for picture in uiImages {
+            var jpegPicture = picture.jpegData(compressionQuality: 0.8)
+            imageData.append(jpegPicture!)
+        }
+        
+        //For singular picture
+//        let imageData = uiImage?.jpegData(compressionQuality: 0.8)
         
         //Check that image data was converted
-        guard imageData != nil else {
+        guard !imageData.isEmpty else {
             return
         }
         
-        //Specify file path and name
-        let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
-        
-        //force unwrapping because i guarded the data above
-        let uploadTask = fileRef.putData(imageData!, metadata: nil) {
-            metadata, error in
+        for picture in imageData {
+            //Specify file path and name
+            let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
             
-            if error == nil && metadata != nil {
+            let uploadTask = fileRef.putData(picture, metadata: nil) {
+                metadata, error in
                 
+                if error == nil && metadata != nil {
+                    
+                }
             }
         }
     }

@@ -160,7 +160,7 @@ extension CreatePostView {
                 .font(.headline)
                 .fontWeight(.bold)
             addPhotosButton
-            addPhotosButtonSingular
+//            addPhotosButtonSingular
             selectedImagesGrid
             Divider()
             
