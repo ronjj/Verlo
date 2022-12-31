@@ -19,7 +19,6 @@ struct Post: Identifiable, Hashable, Codable {
     var coordinates: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: lattitude, longitude: longitude)
     }
-//    var images: [String]
     var dateEvent: Date
            var dateString: String {
                let formatter = DateFormatter()

@@ -7,11 +7,13 @@
 //  Created by Ronald Jabouin on 12/30/22.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import FirebaseFirestore
 
 class FirebasePostViewModel: ObservableObject {
+    
+    @ObservedObject var imagePicker = ImagePicker()
   // MARK: - Public properties
   
   @Published var post: Post
@@ -58,7 +60,7 @@ class FirebasePostViewModel: ObservableObject {
     }
   }
   
-  private func updateOrAddPost() {
+    private func updateOrAddPost() {
     if let _ = post.id {
       self.updatePost(self.post)
     }

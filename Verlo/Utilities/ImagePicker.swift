@@ -9,15 +9,18 @@ import SwiftUI
 import UIKit
 import PhotosUI
 import FirebaseStorage
+import Firebase
 
 @MainActor
 class ImagePicker: ObservableObject {
-
+    
     @Published var image: Image?
     @Published var images: [Image] = []
     
     @Published var uiImage: UIImage?
     @Published var uiImages: [UIImage] = []
+    
+//    @Published var imageString: String = ""
 
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
@@ -92,13 +95,19 @@ class ImagePicker: ObservableObject {
         
         for picture in imageData {
             //Specify file path and name
-            let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
+            let path = "images/\(UUID().uuidString).jpg"
+            let fileRef = storageRef.child(path)
             
             let uploadTask = fileRef.putData(picture, metadata: nil) {
                 metadata, error in
                 
                 if error == nil && metadata != nil {
                     
+                    //save a reference to the fiels in firestore db
+                    let db = Firestore.firestore()
+                    db.collection("images").document().setData(["url":path])
+//                    self.imageString = ("images/\(path)")
+//                    self.post.images.append("\(path)")
                 }
             }
         }

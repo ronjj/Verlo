@@ -13,14 +13,16 @@ struct PostListRowView: View {
     
     var body: some View {
         VStack{
+            
             Rectangle()
-                //AsyncImage(post.images)
-                    //.resizable()
-                    //.aspectRatio(contentMode: .fill)
+            //AsyncImage(post.images)
+            //.resizable()
+            //.aspectRatio(contentMode: .fill)
                 .frame(maxWidth: .infinity)
                 .edgesIgnoringSafeArea(.horizontal)
             
             postInfo
+           
             .padding(.horizontal, 5)
             
         }
@@ -31,6 +33,13 @@ struct PostListRowView: View {
 }
 
 extension PostListRowView {
+    
+    //Need to add tabbar for scrolling effect
+    private var imagesView: some View {
+//        Image(post.images.first ?? "google-icon")
+        Text("placeholder for viewbuilder compiler erro")
+    }
+    
     private var postInfo: some View {
         HStack{
             leftSideTextInfo

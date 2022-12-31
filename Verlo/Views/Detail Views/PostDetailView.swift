@@ -113,7 +113,7 @@ extension PostDetailView {
             }
             .padding(.horizontal)
             
-            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: posts) { post in
+            Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: [post]) { post in
                 MapMarker(coordinate: post.coordinates)
             }
             .aspectRatio(1, contentMode: .fit)
