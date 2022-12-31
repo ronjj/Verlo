@@ -117,9 +117,16 @@ struct DetailedMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+        //MARK: Center of Map
         view.centerCoordinate = self.centerCoordinate
+        
+        //MARK: Map Type Update
         view.mapType = self.defaultMapType
         
+        //MARK: Add Coordinate Annotation To View
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: self.centerCoordinate.latitude, longitude: self.centerCoordinate.longitude)
+        view.addAnnotation(annotation)
     }
 }
 
