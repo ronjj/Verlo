@@ -21,6 +21,7 @@ class ImagePicker: ObservableObject {
     @Published var uiImages: [UIImage] = []
     
 //    @Published var imageString: String = ""
+    
 
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
@@ -111,8 +112,13 @@ class ImagePicker: ObservableObject {
                 }
             }
         }
+        
+//        let post = Post(title: viewModel.post.title, locationText: viewModel.post.locationText, lattitude: viewModel.post.lattitude, longitude: viewModel.post.longitude, pictures: imageData, dateEvent: viewModel.post.dateEvent)
+        //FirebasePostViewModel.addPost(post)
+        //vm.
+        
     }
-
+    
     func removePhoto(index: Int) {
         
         images.remove(at: index)

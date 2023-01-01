@@ -40,7 +40,7 @@ class FirebasePostViewModel: ObservableObject {
   
   private var db = Firestore.firestore()
   
-  private func addPost(_ post: Post) {
+   func addPost(_ post: Post) {
     do {
       let _ = try db.collection("posts").addDocument(from: post)
     }
