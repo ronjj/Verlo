@@ -50,9 +50,6 @@ struct PostDetailView: View {
     }
 }
 
-
-
-
 extension PostDetailView {
     
     private var postInfo: some View {
@@ -121,8 +118,10 @@ extension PostDetailView {
             .cornerRadius(30)
             .padding(.horizontal)
             .overlay(alignment: .topTrailing) {
-                mapDetailViewButton
-                    .offset(x: -10)
+            
+                    mapDetailViewButton
+                        .offset(x: -10)
+                
             }
         }
     }

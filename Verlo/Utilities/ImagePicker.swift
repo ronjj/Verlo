@@ -106,7 +106,7 @@ class ImagePicker: ObservableObject {
                     //save a reference to the fiels in firestore db
                     let db = Firestore.firestore()
                     db.collection("images").document().setData(["url":path])
-//                    self.imageString = ("images/\(path)")
+//                    self.imageString = ("\(path)")
 //                    self.post.images.append("\(path)")
                 }
             }
@@ -114,6 +114,7 @@ class ImagePicker: ObservableObject {
     }
 
     func removePhoto(index: Int) {
+        
         images.remove(at: index)
     }
 }

@@ -205,7 +205,9 @@ extension CreatePostView {
                                 .scaledToFit()
                                 .overlay(alignment: .topTrailing) {
                                     Button{
-                                        imagePicker.removePhoto(index: index)
+                                        withAnimation(.easeInOut(duration: 0.20)) {
+                                            imagePicker.removePhoto(index: index)
+                                        }
                                     } label: {
                                         redXMarkButton
                                     }
