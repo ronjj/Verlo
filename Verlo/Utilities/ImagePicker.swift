@@ -73,57 +73,9 @@ class ImagePicker: ObservableObject {
         }
     }
 
-    func uploadPhotos() {
-
-        //Storage reference
-        let storageRef = Storage.storage().reference()
-        
-        //Turning image into data
-        var imageData: [Data] = []
-        var imageReferences: [String] = []
-                
-        for picture in uiImages {
-            var jpegPicture = picture.jpegData(compressionQuality: 0.8)
-            imageData.append(jpegPicture!)
-        }
-        
-        //For singular picture
-//        let imageData = uiImage?.jpegData(compressionQuality: 0.8)
-        
-        //Check that image data was converted
-        guard !imageData.isEmpty else {
-            return
-        }
-        
-        for picture in imageData {
-            //Specify file path and name
-            let path = "images/\(UUID().uuidString).jpg"
-            print("-----------------------")
-            self.viewModel.post.pictures.append("\(path)")
-            print("appended \(path) to pictures")
-            print("Pictures array: \(viewModel.post.pictures) ")
-            let fileRef = storageRef.child(path)
-            
-            let uploadTask = fileRef.putData(picture, metadata: nil) {
-                metadata, error in
-                
-                if error == nil && metadata != nil {
-                    
-                    //save a reference to the fiels in firestore db
-                    let db = Firestore.firestore()
-                    db.collection("images").document().setData(["url":path])
-                    imageReferences.append(path)
-//                    self.imageString = ("\(path)")
-//                    viewModel.post.images.append("\(path)")
-                    
-                }
-            }
-        }
-        
-    }
+    
     
     func removePhoto(index: Int) {
-        
         images.remove(at: index)
     }
 }

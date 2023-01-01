@@ -142,7 +142,8 @@ extension CreatePostView {
     
     private var createOrModifyButton: some View {
         Button {
-            imagePicker.uploadPhotos()
+//            imagePicker.uploadPhotos()
+            
             self.handleDoneTapped()
         } label: {
             Text(mode == .new ? "create post" : "save changes")
@@ -168,12 +169,12 @@ extension CreatePostView {
     }
     
     private var addPhotosButton: some View {
-        PhotosPicker(selection: $imagePicker.imageSelections,
+        PhotosPicker(selection: $viewModel.imageSelections,
                      maxSelectionCount: 10,
                      matching: .images,
                      photoLibrary: .shared()) {
             HStack{
-                if imagePicker.images.isEmpty {
+                if viewModel.images.isEmpty {
                     noImagesSelected
                 } else {
                     editImagesSelected
@@ -181,11 +182,11 @@ extension CreatePostView {
             }
         }
          .buttonStyle(.bordered)
-         .tint(imagePicker.images.isEmpty ? .red : .orange)
+         .tint(viewModel.images.isEmpty ? .red : .orange)
     }
     
     private var addPhotosButtonSingular: some View {
-        PhotosPicker(selection: $imagePicker.imageSelection,
+        PhotosPicker(selection: $viewModel.imageSelection,
                      matching: .images,
                      photoLibrary: .shared()) {
 
@@ -196,17 +197,17 @@ extension CreatePostView {
     
     private var selectedImagesGrid: some View {
         VStack {
-            if !imagePicker.images.isEmpty {
+            if !viewModel.images.isEmpty {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                            imagePicker.images[index]
+                        ForEach(0..<viewModel.images.count, id: \.self) { index in
+                            viewModel.images[index]
                                 .resizable()
                                 .scaledToFit()
                                 .overlay(alignment: .topTrailing) {
                                     Button{
                                         withAnimation(.easeInOut(duration: 0.20)) {
-                                            imagePicker.removePhoto(index: index)
+                                            viewModel.removePhoto(index: index)
                                         }
                                     } label: {
                                         redXMarkButton
