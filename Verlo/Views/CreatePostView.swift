@@ -142,8 +142,8 @@ extension CreatePostView {
     
     private var createOrModifyButton: some View {
         Button {
-            self.handleDoneTapped()
             imagePicker.uploadPhotos()
+            self.handleDoneTapped()
         } label: {
             Text(mode == .new ? "create post" : "save changes")
         }

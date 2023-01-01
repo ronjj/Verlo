@@ -55,6 +55,4 @@ class FirebasePostsViewModel: ObservableObject {
       }
     }
   }
-
-  
 }

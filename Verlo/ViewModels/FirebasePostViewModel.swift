@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class FirebasePostViewModel: ObservableObject {
     
-    @ObservedObject var imagePicker = ImagePicker()
+//    @ObservedObject var imagePicker = ImagePicker()
   // MARK: - Public properties
   
   @Published var post: Post
@@ -43,6 +43,7 @@ class FirebasePostViewModel: ObservableObject {
    func addPost(_ post: Post) {
     do {
       let _ = try db.collection("posts").addDocument(from: post)
+        print("Post title: \(post.title). Post Pictures: \(post.pictures)")
     }
     catch {
       print(error)
