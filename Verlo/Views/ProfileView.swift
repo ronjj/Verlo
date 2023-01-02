@@ -92,11 +92,20 @@ extension ProfileView {
     
     private var likedPostsView: some View {
         VStack {
-            Text("liked posts")
-                .font(.headline)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment:.leading)
-                .padding(.horizontal)
+            VStack(spacing: 3){
+                Text("liked posts")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment:.leading)
+                    .padding(.horizontal)
+                
+                Rectangle()
+                    .frame(width: 85, height: 2)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment:.leading)
+                    .padding(.horizontal)
+            }
+
             
             LazyVGrid(columns: columns) {
                 ForEach(vm.likedPosts) { post in
@@ -113,11 +122,21 @@ extension ProfileView {
     
     private var myPostsView: some View {
         VStack {
-            Text("my posts")
-                .font(.headline)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment:.leading)
-                .padding(.horizontal)
+            VStack(spacing: 3){
+                Text("my posts")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment:.leading)
+                    .padding(.horizontal)
+                
+                Rectangle()
+                    .frame(width: 75, height: 2)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment:.leading)
+                    .padding(.horizontal)
+
+            }
+            
             
             LazyVGrid(columns: columns) {
                 ForEach(vm.myPosts) { post in
@@ -130,5 +149,6 @@ extension ProfileView {
                 }
             }
         }
+        .padding(.top)
     }
 }
