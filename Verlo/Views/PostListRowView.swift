@@ -11,24 +11,36 @@ struct PostListRowView: View {
     
     var post: Post
     
+    @Binding var imagesToDisplay: [UIImage]
+    @ObservedObject var viewModel = FirebasePostViewModel()
+    
+    @EnvironmentObject private var vm: PostViewModel
+    
     var body: some View {
         VStack{
-            
-            Rectangle()
-            //AsyncImage(post.images)
-            //.resizable()
-            //.aspectRatio(contentMode: .fill)
-                .frame(maxWidth: .infinity)
-                .edgesIgnoringSafeArea(.horizontal)
+            TabView {
+                ForEach(post.pictures, id: \.self) { image in
+                    Image(image)
+                        .resizable()
+                        .scaledToFill()
+//                        .clipped()
+                }
+            }
+            .tabViewStyle(PageTabViewStyle())
+
+            .frame(maxWidth: .infinity)
+            .frame(height: 300)
+            .edgesIgnoringSafeArea(.horizontal)
             
             postInfo
            
             .padding(.horizontal, 5)
             
         }
-        .frame(maxWidth: .infinity, minHeight:  200, maxHeight: 300)
-        .padding(.bottom, 5)
-        
+
+//        .onAppear {
+//            viewModel.retrieveImages()
+//        }
     }
 }
 

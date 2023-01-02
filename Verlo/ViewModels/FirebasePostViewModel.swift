@@ -25,8 +25,11 @@ class FirebasePostViewModel: ObservableObject {
    //MARK: - ImagePicker
     @Published var image: Image?
     @Published var images: [Image] = []
+    
     @Published var uiImage: UIImage?
     @Published var uiImages: [UIImage] = []
+    
+    @Published var imagesToDisplay = [UIImage]()
     
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
@@ -168,6 +171,43 @@ class FirebasePostViewModel: ObservableObject {
       print(error)
     }
   }
+    
+
+    func retrieveImages() {
+        //current way: retrieving all images
+        //Need to: retrieve the images only for the specific post
+        
+        let db = Firestore.firestore()
+        
+        //Want to go to posts
+        db.collection("images").getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                var paths = [String]()
+                
+                //within posts want to get the pictures array and loop through that
+                for doc in snapshot!.documents {
+                    paths.append(doc["url"] as! String)
+                }
+                
+                for path in paths {
+                    let storageRef = Storage.storage().reference()
+                    
+                    let fileRef = storageRef.child(path)
+                    
+                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                        if error == nil && data != nil {
+                            if let image = UIImage(data: data!) {
+//                                DispatchQueue.main.async {
+//                                    self.imagesToDisplay.append(image)
+//
+//                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
   
   private func updatePost(_ post: Post) {
     if let documentId = post.id {

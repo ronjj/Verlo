@@ -9,11 +9,11 @@ import SwiftUI
 
 class PostViewModel: ObservableObject {
 
-//    @Published var posts: [Post]
+    @Published var posts: [Post]
 
     init() {
-//        let posts = PostsDataService.posts
-//        self.posts = posts
+        let posts = PostsDataService.posts
+        self.posts = posts
     }
 
 

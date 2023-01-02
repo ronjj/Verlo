@@ -16,6 +16,9 @@ struct PostDetailView: View {
     @State var likeTapped: Bool = false
     @State var mapDetailSelected: Bool = false
     
+    @ObservedObject var viewModel = FirebasePostViewModel()
+
+    
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
     
     var body: some View {
