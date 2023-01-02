@@ -18,38 +18,28 @@ struct PostListRowView: View {
     
     var body: some View {
         VStack{
-            TabView {
-                ForEach(post.pictures, id: \.self) { image in
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
-//                        .clipped()
-                }
-            }
-            .tabViewStyle(PageTabViewStyle())
-
-            .frame(maxWidth: .infinity)
-            .frame(height: 300)
-            .edgesIgnoringSafeArea(.horizontal)
+            imagesView
+                .tabViewStyle(PageTabViewStyle())
+                .frame(maxWidth: .infinity)
+                .frame(height: 300)
+                .edgesIgnoringSafeArea(.horizontal)
             
             postInfo
-           
-            .padding(.horizontal, 5)
-            
+                .padding(.horizontal, 5)
         }
-
-//        .onAppear {
-//            viewModel.retrieveImages()
-//        }
     }
 }
 
 extension PostListRowView {
     
-    //Need to add tabbar for scrolling effect
     private var imagesView: some View {
-//        Image(post.images.first ?? "google-icon")
-        Text("placeholder for viewbuilder compiler erro")
+        TabView {
+            ForEach(post.pictures, id: \.self) { image in
+                Image(image)
+                    .resizable()
+                    .scaledToFill()
+            }
+        }
     }
     
     private var postInfo: some View {
@@ -64,9 +54,10 @@ extension PostListRowView {
         VStack(alignment: .leading) {
             HStack{
                 Image(systemName: "mappin")
-                    .font(.caption2)
+                    .font(.caption)
                 Text(post.locationText.lowercased())
-                    .font(.headline)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
                     .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.trailing)
                 
@@ -82,6 +73,7 @@ extension PostListRowView {
     private var postTitle: some View {
         Text("\(post.title.lowercased())")
             .font(.body)
+            .fontWeight(.bold)
             .multilineTextAlignment(.leading)
             .minimumScaleFactor(0.5)
     }
