@@ -64,27 +64,42 @@ struct LoginView: View {
     @StateObject var loginModel: LoginViewModel = .init()
     
     var body: some View {
-        VStack {
-            googleLoginButton
-            .overlay {
-                if let clientID = FirebaseApp.app()?.options.clientID {
-                    GoogleSignInButton{
-                        GIDSignIn.sharedInstance.signIn(with: .init(clientID: clientID), presenting: UIApplication.shared.getRootViewController()){user, error in
-                            if let error = error {
-                                print(error.localizedDescription)
-                                return
+        ZStack {
+            
+            Color.verloGreen
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Spacer()
+                
+                Image("verlo-text")
+                    .resizable()
+                    .scaledToFit()
+                    
+                
+                googleLoginButton
+                .overlay {
+                    if let clientID = FirebaseApp.app()?.options.clientID {
+                        GoogleSignInButton{
+                            GIDSignIn.sharedInstance.signIn(with: .init(clientID: clientID), presenting: UIApplication.shared.getRootViewController()){user, error in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                    return
+                                    
+                                }
                                 
-                            }
-                            
-                            if let user {
-                                        loginModel.logGoogleUser(user: user)
+                                if let user {
+                                            loginModel.logGoogleUser(user: user)
 
+                                }
                             }
                         }
                     }
                 }
+                
+                Spacer()
+                
             }
-
         }
     }
 }

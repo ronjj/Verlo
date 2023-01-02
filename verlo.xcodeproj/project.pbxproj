@@ -281,7 +281,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "Verlo" */;
+			buildConfigurationList = 54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "verlo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -541,7 +541,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "Verlo" */ = {
+		54E6CDAC294133A20018D353 /* Build configuration list for PBXProject "verlo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54E6CDBD294133A30018D353 /* Debug */,
