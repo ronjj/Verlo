@@ -88,25 +88,25 @@ extension PostDetailView {
     
     private var mapSection: some View {
         VStack{
-            HStack{
-                Button {
-                    likeTapped.toggle()
-                } label : {
-                    Image(systemName: likeTapped ? "heart.fill" : "heart")
-                        .foregroundColor(.red)
-                        .font(.title2)
-                }
-                
-                Button {
-                    //Share location button
-                } label : {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.title2)
-                }
-                
-                Spacer()
-            }
-            .padding(.horizontal)
+//            HStack{
+//                Button {
+//                    likeTapped.toggle()
+//                } label : {
+//                    Image(systemName: likeTapped ? "heart.fill" : "heart")
+//                        .foregroundColor(.red)
+//                        .font(.title2)
+//                }
+//                
+//                Button {
+//                    presentShareSheet(coords: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: post.lattitude, longitude: post.longitude), span: MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)))
+//                } label : {
+//                    Image(systemName: "square.and.arrow.up")
+//                        .font(.title2)
+//                }
+//                
+//                Spacer()
+//            }
+//            .padding(.horizontal)
             
             Map(coordinateRegion: .constant(MKCoordinateRegion(center: post.coordinates, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))), annotationItems: [post]) { post in
                 MapMarker(coordinate: post.coordinates)
@@ -144,6 +144,16 @@ extension PostDetailView {
 }
 
 
+extension View{
+    func presentShareSheet(coords: MKCoordinateRegion) {
+        let activityVC = UIActivityViewController(activityItems: [coords], applicationActivities: nil)
+        
+        (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
+            .keyWindow?
+            .rootViewController?
+            .present(activityVC, animated: true)
+    }
+}
 
 
 

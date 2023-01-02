@@ -26,6 +26,15 @@ enum Action {
 
 struct CreatePostView: View {
     
+    //offline info
+    @State var offlineTitle: String = ""
+    @State var offlineLocation: String = ""
+    @State var offlineLattitude: Double = 0.0
+    @State var offlineLongitude: Double = 0.0
+    @EnvironmentObject private var vm: PostViewModel
+
+
+    
     //Presenting this sheet
     @Binding var isAddingView: Bool
     
@@ -62,9 +71,13 @@ struct CreatePostView: View {
                     .padding(.horizontal)
                     
                     createOrModifyButton
-                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked)
+//                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked)
+                        .disabled(offlineTitle.isEmpty || offlineLocation.isEmpty || offlineTitle.count > 30 || offlineLocation.count > 30 || !saveButtonClicked)
+
                     
-                    if viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked {
+//                    if viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked {
+                        
+                    if offlineTitle.isEmpty || offlineLocation.isEmpty || offlineTitle.count > 30 || offlineLocation.count > 30 || !saveButtonClicked {
 
                         Label("all fields must be completed before posting", systemImage: "exclamationmark.triangle")
                             .foregroundColor(.red)
@@ -142,8 +155,7 @@ extension CreatePostView {
     
     private var createOrModifyButton: some View {
         Button {
-//            imagePicker.uploadPhotos()
-            
+            vm.posts.append(Post(title: offlineTitle, locationText: offlineLocation, lattitude: offlineLattitude, longitude: offlineLongitude, pictures: ["google-icon"], dateEvent: Date()))
             self.handleDoneTapped()
         } label: {
             Text(mode == .new ? "create post" : "save changes")
@@ -306,8 +318,10 @@ extension CreatePostView {
         Button {
             self.showLocationPicker.toggle()
             self.saveButtonClicked = true
-            viewModel.post.lattitude = coordinates.latitude
-            viewModel.post.longitude = coordinates.longitude
+//            viewModel.post.lattitude = coordinates.latitude
+//            viewModel.post.longitude = coordinates.longitude
+            offlineLattitude = coordinates.latitude
+            offlineLongitude = coordinates.longitude
             
             
         } label : {
@@ -331,12 +345,15 @@ extension CreatePostView {
             Text("title")
                 .font(.headline)
                 .fontWeight(.bold)
-            TextField("post title", text: $viewModel.post.title)
+//            TextField("post title", text: $viewModel.post.title)
+            TextField("post title", text: $offlineTitle)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
             
-            CharactersRemainView(currentCount: viewModel.post.title.count)
+            CharactersRemainView(currentCount: offlineTitle.count)
+
+//            CharactersRemainView(currentCount: viewModel.post.title.count)
             
             Divider()
         }
@@ -349,12 +366,15 @@ extension CreatePostView {
             Text("approximate location")
                 .font(.headline)
                 .fontWeight(.bold)
-            TextField("general location of photos", text: $viewModel.post.locationText)
+//            TextField("general location of photos", text: $viewModel.post.locationText)
+            TextField("general location of photos", text: $offlineLocation)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
             
-            CharactersRemainView(currentCount: viewModel.post.locationText.count)
+            CharactersRemainView(currentCount: offlineLocation.count)
+
+//            CharactersRemainView(currentCount: viewModel.post.locationText.count)
             
             Divider()
         }
@@ -381,29 +401,6 @@ extension CreatePostView {
     }
 }
 
-struct LocationTextSection: View {
-    
-    @ObservedObject var viewModel = FirebasePostViewModel()
-    
-    var sectionTitle: String
-    var placeholderText: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(sectionTitle)
-                .font(.headline)
-                .fontWeight(.bold)
-            TextField(placeholderText, text: $viewModel.post.locationText)
-                .autocapitalization(.none)
-                .autocorrectionDisabled()
-                .foregroundColor(.secondary)
-            
-            CharactersRemainView(currentCount: viewModel.post.locationText.count)
-            
-            Divider()
-        }
-    }
-}
     
 struct CharactersRemainView: View {
         
