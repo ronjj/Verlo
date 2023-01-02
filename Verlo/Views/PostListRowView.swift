@@ -53,19 +53,18 @@ extension PostListRowView {
     }
     
     private var postInfo: some View {
-        HStack{
-            leftSideTextInfo
+        VStack(alignment: .leading, spacing: 10){
+            postTitle
             
-            Spacer()
-            
-            rightSideTextInfo
+            postLocationAndTime
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
-    private var rightSideTextInfo: some View {
-        VStack(alignment: .trailing) {
+    private var postLocationAndTime: some View {
+        VStack(alignment: .leading) {
             HStack{
                 Image(systemName: "mappin")
-                    .font(.body)
+                    .font(.caption2)
                 Text(post.locationText.lowercased())
                     .font(.headline)
                     .minimumScaleFactor(0.7)
@@ -80,7 +79,7 @@ extension PostListRowView {
         }
     }
     
-    private var leftSideTextInfo: some View {
+    private var postTitle: some View {
         Text("\(post.title.lowercased())")
             .font(.body)
             .multilineTextAlignment(.leading)
