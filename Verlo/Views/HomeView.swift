@@ -57,30 +57,12 @@ extension HomeView {
                 NavigationLink(destination: PostDetailView(post: post)) {
                     PostListRowView(post: post, imagesToDisplay: $viewModel.imagesToDisplay)
                     
-                
-                //                    removes the blue highlight from SwiftUI NavigationLink
+                //removes the blue highlight from SwiftUI NavigationLink
                 .buttonStyle(.plain)
             }
         }
     }
-
-//        LazyVStack{
-//            ForEach(vm.posts) { post in
-//                Grid {
-//                    GridRow {
-//                        ForEach(0..<2) {_ in
-//                            NavigationLink(destination: PostDetailView(post: post)) {
-//                                PostListRowView(post: post, imagesToDisplay: $viewModel.imagesToDisplay)
-//
-//                            }
-//                            //                    removes the blue highlight from SwiftUI NavigationLink
-//                            .buttonStyle(.plain)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-    }
+}
     
     private var verloAtLocationText: some View {
         HStack() {

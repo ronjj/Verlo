@@ -17,8 +17,8 @@ struct PostDetailView: View {
     @State var mapDetailSelected: Bool = false
     
     @ObservedObject var viewModel = FirebasePostViewModel()
+    @EnvironmentObject private var vm: PostViewModel
 
-    
     @FirestoreQuery(collectionPath: "posts") var posts: [Post]
     
     var body: some View {
@@ -28,15 +28,14 @@ struct PostDetailView: View {
             
             ScrollView {
                 VStack {
-                    //Images
-                    Rectangle()
-                        .foregroundColor(.white)
+                    imagesView
+                        .tabViewStyle(PageTabViewStyle())
                         .frame(maxWidth: .infinity)
-                        .frame(height: 200)
-                        .edgesIgnoringSafeArea(.all)
+                        .frame(height: 500)
+                        .edgesIgnoringSafeArea(.horizontal)
                     
                     postInfo
-                        .padding(.horizontal, 5)
+                        .padding(.horizontal)
                         .padding(.bottom, 10)
                     
                     mapSection
@@ -55,18 +54,19 @@ struct PostDetailView: View {
 
 extension PostDetailView {
     
-    private var postInfo: some View {
-        HStack{
-            leftSideTextInfo
-            
-            Spacer()
-            
-            rightSideTextInfo
+    private var imagesView: some View {
+        TabView {
+            ForEach(post.pictures, id: \.self) { image in
+                Image(image)
+                    .resizable()
+                    .scaledToFill()
+            }
         }
     }
+
     
-    private var rightSideTextInfo: some View {
-        VStack(alignment: .trailing) {
+    private var postInfo: some View {
+        VStack(alignment: .leading) {
             HStack{
                 Image(systemName: "mappin")
                     .font(.body)
@@ -82,14 +82,9 @@ extension PostDetailView {
                 .minimumScaleFactor(0.7)
                 .multilineTextAlignment(.leading)
         }
+        .frame(maxWidth:.infinity, alignment: .leading)
     }
     
-    private var leftSideTextInfo: some View {
-        Text("\(post.title.lowercased())")
-            .font(.body)
-            .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.5)
-    }
     
     private var mapSection: some View {
         VStack{
