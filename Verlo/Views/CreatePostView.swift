@@ -155,7 +155,12 @@ extension CreatePostView {
     
     private var createOrModifyButton: some View {
         Button {
-            vm.posts.append(Post(title: offlineTitle, locationText: offlineLocation, lattitude: offlineLattitude, longitude: offlineLongitude, pictures: ["google-icon"], dateEvent: Date()))
+            
+            let newPost = Post(title: offlineTitle, locationText: offlineLocation, lattitude: offlineLattitude, longitude: offlineLongitude, pictures: ["google-icon"], dateEvent: Date())
+            
+            vm.posts.append(newPost)
+            vm.myPosts.append(newPost)
+            
             self.handleDoneTapped()
         } label: {
             Text(mode == .new ? "create post" : "save changes")

@@ -51,7 +51,7 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    private var listView: some View {
+     private var listView: some View {
         LazyVGrid(columns: columns) {
             ForEach(vm.posts) { post in
                 NavigationLink(destination: PostDetailView(post: post)) {
@@ -90,6 +90,7 @@ extension HomeView {
                 Image(systemName: "plus")
                     .fontWeight(.bold)
                     .foregroundColor(.verloGreen)
+                    
             }
         }
     }
