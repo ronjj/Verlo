@@ -59,7 +59,7 @@ extension UIApplication {
     }
     
 }
-struct LoginView: View {
+struct LoginViewOld: View {
     
     @StateObject var loginModel: LoginViewModel = .init()
     
@@ -104,7 +104,7 @@ struct LoginView: View {
     }
 }
 
-extension LoginView {
+extension LoginViewOld {
     private var googleLoginButton: some View {
         HStack(spacing: 8) {
             HStack {

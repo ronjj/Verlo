@@ -17,9 +17,16 @@
 		541766BB295DFB0300607F69 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 541766BA295DFB0300607F69 /* FirebaseFirestoreSwift */; };
 		541766BD295DFB0300607F69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 541766BC295DFB0300607F69 /* FirebaseStorage */; };
 		541766C1295DFB6400607F69 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541766C0295DFB6400607F69 /* SettingsView.swift */; };
+		545EE21F2969B683006303AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE21E2969B683006303AD /* User.swift */; };
+		545EE2212969B6CE006303AD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE2202969B6CD006303AD /* LoadingView.swift */; };
+		545EE2232969B718006303AD /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE2222969B718006303AD /* EmailLoginView.swift */; };
+		545EE2252969B740006303AD /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE2242969B740006303AD /* RegisterView.swift */; };
+		545EE2282969B784006303AD /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE2272969B784006303AD /* ReusablePostsView.swift */; };
+		545EE22B2969BC25006303AD /* ReusableProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE22A2969BC25006303AD /* ReusableProfileContent.swift */; };
+		545EE22D2969BC61006303AD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EE22C2969BC60006303AD /* ProfileView.swift */; };
 		5463817F296215F60031C08C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5463817E296215F60031C08C /* SDWebImageSwiftUI */; };
 		5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474FA3F295CB6EB00804742 /* ImagePicker.swift */; };
-		54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileView.swift */; };
+		54BD4913294650CA000ABF46 /* ProfileViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4912294650CA000ABF46 /* ProfileViewOld.swift */; };
 		54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4914294650D5000ABF46 /* CreatePostView.swift */; };
 		54BD49172946514F000ABF46 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD49162946514F000ABF46 /* TabView.swift */; };
 		54BD491A294657B2000ABF46 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD4919294657B2000ABF46 /* ColorsExtension.swift */; };
@@ -52,8 +59,15 @@
 
 /* Begin PBXFileReference section */
 		541766C0295DFB6400607F69 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		545EE21E2969B683006303AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		545EE2202969B6CD006303AD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		545EE2222969B718006303AD /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		545EE2242969B740006303AD /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		545EE2272969B784006303AD /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
+		545EE22A2969BC25006303AD /* ReusableProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileContent.swift; sourceTree = "<group>"; };
+		545EE22C2969BC60006303AD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5474FA3F295CB6EB00804742 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		54BD4912294650CA000ABF46 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		54BD4912294650CA000ABF46 /* ProfileViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewOld.swift; path = Verlo/Views/ProfileViewOld.swift; sourceTree = SOURCE_ROOT; };
 		54BD4914294650D5000ABF46 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		54BD49162946514F000ABF46 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = "../New Group/TabView.swift"; sourceTree = "<group>"; };
 		54BD4919294657B2000ABF46 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
@@ -107,6 +121,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		545EE2262969B749006303AD /* Login and Register */ = {
+			isa = PBXGroup;
+			children = (
+				54DF0DDD295FB54E00DD3DDA /* LoginView.swift */,
+				545EE2222969B718006303AD /* EmailLoginView.swift */,
+				545EE2242969B740006303AD /* RegisterView.swift */,
+			);
+			path = "Login and Register";
+			sourceTree = "<group>";
+		};
+		545EE2292969BC13006303AD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				545EE22A2969BC25006303AD /* ReusableProfileContent.swift */,
+				54BD4912294650CA000ABF46 /* ProfileViewOld.swift */,
+				545EE22C2969BC60006303AD /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		54BD4918294657A5000ABF46 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,15 +227,17 @@
 		54F28CF329452C06003E737A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				545EE2292969BC13006303AD /* Profile */,
+				545EE2262969B749006303AD /* Login and Register */,
 				54C3B1502960A43B00F0958C /* Detail Views */,
 				54DF0DD0295F5BA700DD3DDA /* LocationPicker */,
 				54BD491B29465E3F000ABF46 /* TabBar */,
 				54E6CDB6294133A20018D353 /* HomeView.swift */,
-				54BD4912294650CA000ABF46 /* ProfileView.swift */,
 				54BD4914294650D5000ABF46 /* CreatePostView.swift */,
 				54F28CFD294535F6003E737A /* PostListRowView.swift */,
 				541766C0295DFB6400607F69 /* SettingsView.swift */,
-				54DF0DDD295FB54E00DD3DDA /* LoginView.swift */,
+				545EE2202969B6CD006303AD /* LoadingView.swift */,
+				545EE2272969B784006303AD /* ReusablePostsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				54F28CF629452C23003E737A /* Post.swift */,
+				545EE21E2969B683006303AD /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,9 +361,11 @@
 			files = (
 				54BD49172946514F000ABF46 /* TabView.swift in Sources */,
 				54DF0DE6295FC5A600DD3DDA /* ContentView.swift in Sources */,
-				54BD4913294650CA000ABF46 /* ProfileView.swift in Sources */,
+				54BD4913294650CA000ABF46 /* ProfileViewOld.swift in Sources */,
 				54DF0DD8295F5C4A00DD3DDA /* VisualEffectView.swift in Sources */,
 				54F28CFC2945336F003E737A /* PostViewModel.swift in Sources */,
+				545EE2212969B6CE006303AD /* LoadingView.swift in Sources */,
+				545EE21F2969B683006303AD /* User.swift in Sources */,
 				54DF0DDC295F8E3300DD3DDA /* FirebasePostsViewModel.swift in Sources */,
 				5474FA40295CB6EB00804742 /* ImagePicker.swift in Sources */,
 				54DF0DD2295F5BBB00DD3DDA /* LocalizedStringKey+toString.swift in Sources */,
@@ -341,12 +380,17 @@
 				54BD49212946645B000ABF46 /* TabBarItemsPreferenceKey.swift in Sources */,
 				54F28CF729452C23003E737A /* Post.swift in Sources */,
 				54BD4915294650D5000ABF46 /* CreatePostView.swift in Sources */,
+				545EE2252969B740006303AD /* RegisterView.swift in Sources */,
+				545EE22B2969BC25006303AD /* ReusableProfileContent.swift in Sources */,
 				54DF0DDA295F8D6000DD3DDA /* FirebasePostViewModel.swift in Sources */,
 				54BD491F29466104000ABF46 /* CustomTabBarContainerView.swift in Sources */,
+				545EE2232969B718006303AD /* EmailLoginView.swift in Sources */,
+				545EE2282969B784006303AD /* ReusablePostsView.swift in Sources */,
 				54F28D0029453BE7003E737A /* PostDetailView.swift in Sources */,
 				54BD4923294667C1000ABF46 /* TabBarItem.swift in Sources */,
 				54DF0DD6295F5C1A00DD3DDA /* MapView.swift in Sources */,
 				54F28CFA29452FF3003E737A /* MockData.swift in Sources */,
+				545EE22D2969BC61006303AD /* ProfileView.swift in Sources */,
 				54F28CFE294535F6003E737A /* PostListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

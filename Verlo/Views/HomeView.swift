@@ -20,6 +20,8 @@ struct HomeView: View {
     
     let columns: [GridItem] = [GridItem(), GridItem()]
     
+    @State var recentsPosts: [Post] = []
+    @State private var createNewPost: Bool = false
 
     var body: some View {
         NavigationView{
@@ -28,7 +30,8 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
-                    listView
+//                    listView
+                    ReusablePostsView(posts: $recentsPosts)
                         .padding(.vertical)
                 }
                 .scrollIndicators(.hidden)
@@ -45,7 +48,11 @@ struct HomeView: View {
             }
         }
         .fullScreenCover(isPresented: $isAddingView) {
-            CreatePostView(isAddingView: $isAddingView)
+//            CreatePostView(isAddingView: $isAddingView)
+            CreateNewPost { post in
+                recentsPosts.insert(post, at: 0)
+                
+            }
         }
     }
 }
@@ -55,7 +62,7 @@ extension HomeView {
         LazyVGrid(columns: columns) {
             ForEach(vm.posts) { post in
                 NavigationLink(destination: PostDetailView(post: post)) {
-                    PostListRowView(post: post, imagesToDisplay: $viewModel.imagesToDisplay)
+                    PostCardView(post: post)
                     
                 //removes the blue highlight from SwiftUI NavigationLink
                 .buttonStyle(.plain)

@@ -33,8 +33,6 @@ struct CreatePostView: View {
     @State var offlineLongitude: Double = 0.0
     @EnvironmentObject private var vm: PostViewModel
 
-
-    
     //Presenting this sheet
     @Binding var isAddingView: Bool
     
@@ -57,6 +55,19 @@ struct CreatePostView: View {
     var mode: Mode = .new
     var completionHandler: ((Result<Action, Error>) -> Void)?
     
+    //New
+    var onPost: (Post)->()
+    @AppStorage("user_name") var userName: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
+    @Environment(\.dismiss) private var dismiss
+    @State private var isLoading: Bool = false
+    @State private var errorMessage: String = ""
+    @State private var showError: Bool = false
+    
+    @State private var showImagePicker: Bool = false
+    @State private var photoItem: PhotosPickerItem?
+    @FocusState private var showKeyboard: Bool
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -71,28 +82,17 @@ struct CreatePostView: View {
                     .padding(.horizontal)
                     
                     createOrModifyButton
-//                        .disabled(viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked)
+//
                         .disabled(offlineTitle.isEmpty || offlineLocation.isEmpty || offlineTitle.count > 30 || offlineLocation.count > 30 || !saveButtonClicked)
 
                     
-//                    if viewModel.post.title.isEmpty || viewModel.post.locationText.isEmpty || viewModel.post.title.count > 30 || viewModel.post.locationText.count > 30 || !saveButtonClicked {
+
                         
                     if offlineTitle.isEmpty || offlineLocation.isEmpty || offlineTitle.count > 30 || offlineLocation.count > 30 || !saveButtonClicked {
 
                         Label("all fields must be completed before posting", systemImage: "exclamationmark.triangle")
                             .foregroundColor(.red)
                     }
-//                    """
-//                    Disabled if:
-//                    - title is empty
-//                    - location is empty
-//                    - title is over 30 characters
-//                    - location is over 30 characters
-//                    - no photos are selected
-//                    - no coordinates are selected
-                    // Eventuslly switch this to show an error with the corresponding issue
-//                    """
-                       
                     
                     if mode == .edit {
                         Button {
@@ -132,6 +132,74 @@ struct CreatePostView: View {
                 }
             }
         }
+        .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
+        .onChange(of: photoItem) { newValue in
+            if let newValue {
+                Task {
+                    if let rawImageData = try? await newValue.loadTransferable(type: Data.self), let image = UIImage(data: rawImageData), let compressedImageData = image.jpegData(compressionQuality: 0.5) {
+                        await MainActor.run(body: {
+                            postImageData = compressedImageData
+                            photoItem = nil
+                        })
+                    }
+                }
+            }
+        }
+        .alert(errorMessage, isPresented: $showError, actions: {})
+        .overlay {
+            LoadingView(show: $isLoading)
+        }
+    }
+    func createPost() {
+        isLoading = true
+        showKeyboard = false
+        
+        Task {
+            do {
+                guard let profileURL = profileURL else {return}
+                
+                //Uploading image if selected
+                let imageReferenceID = "\(userUID)\(Date())"
+                let storageRef = Storage.storage().reference().child("Post_Images").child(imageReferenceID)
+                if let postImageData{
+                    let _ = try await storageRef.putDataAsync(postImageData)
+                    let downloadURL = try await storageRef.downloadURL()
+                    
+                    //creating post object with image id and url
+                    let post = Post(title: offlineTitle, imageURL: downloadURL, imageReferenceID: imageReferenceID ,  userName: userName, userUID: userUID, locationText: offlineLocation, lattitude: coordinates.latitude, longitude: coordinates.longitude, dateEvent: Date())
+                    
+                    try await createDocumentAtFirebase(post)
+                    
+                } else {
+                    let post = Post(title: offlineTitle, userName: userName, userUID: userUID, locationText: offlineLocation, lattitude: coordinates.latitude, longitude: coordinates.longitude, dateEvent: Date())
+                    try await createDocumentAtFirebase(post)
+                }
+            } catch {
+                await setError(error)
+            }
+        }
+    }
+    
+    func createDocumentAtFirebase(_ post: Post)async throws {
+        //writing documen to firebase firestore
+        
+        let doc = Firestore.firestore().collection("Posts").document()
+        let _ = try doc.setData(from: post, completion: { error in
+            if error == nil {
+                isLoading = false
+                var updatedPost = post
+                updatedPost.id = doc.documentID
+                onPost(updatedPost)
+                dismiss()
+            }
+        })
+    }
+    
+    func setError(_ error: Error)async{
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 }
 
@@ -156,12 +224,7 @@ extension CreatePostView {
     private var createOrModifyButton: some View {
         Button {
             
-            let newPost = Post(title: offlineTitle, locationText: offlineLocation, lattitude: offlineLattitude, longitude: offlineLongitude, pictures: ["google-icon"], dateEvent: Date())
-            
-            vm.posts.append(newPost)
-            vm.myPosts.append(newPost)
-            
-            self.handleDoneTapped()
+            createPost()
         } label: {
             Text(mode == .new ? "create post" : "save changes")
         }
@@ -173,15 +236,50 @@ extension CreatePostView {
     
     //MARK: Photos
     private var photoSection: some View {
-        VStack(alignment: .leading, spacing: 5){
-            Text("photos")
-                .font(.headline)
-                .fontWeight(.bold)
-            addPhotosButton
-//            addPhotosButtonSingular
-            selectedImagesGrid
-            Divider()
+//        VStack(alignment: .leading, spacing: 5){
+//            Text("photos")
+//                .font(.headline)
+//                .fontWeight(.bold)
+//            addPhotosButton
+////            addPhotosButtonSingular
+//            selectedImagesGrid
+//            Divider()
+//
+//        }
+        VStack {
             
+            Button {
+                showImagePicker.toggle()
+            } label: {
+                Image(systemName: "photo.on.rectangle")
+                    .font(.title3)
+            }
+            
+            if let postImageData, let image = UIImage(data: postImageData) {
+                GeometryReader{
+                    let size = $0.size
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width, height: size.height)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .overlay(alignment: .topTrailing) {
+                            Button {
+                                withAnimation(.easeInOut(duration: 0.25)) {
+                                    self.postImageData = nil
+                                }
+                            } label : {
+                                Image(systemName: "xmark")
+                                    .fontWeight(.bold)
+                                    .tint(.red)
+                            }
+                            .padding(10)
+                        }
+                }
+                
+                .clipped()
+                .frame(height: 220)
+            }
         }
     }
     
