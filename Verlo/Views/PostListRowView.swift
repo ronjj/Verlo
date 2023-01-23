@@ -56,6 +56,8 @@ extension PostListRowView {
             HStack{
                 Image(systemName: "mappin")
                     .font(.caption)
+                Spacer()
+                    .frame(width: -10)
                 Text(post.locationText.lowercased())
                     .font(.subheadline)
                     .fontWeight(.regular)
