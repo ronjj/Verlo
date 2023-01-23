@@ -11,6 +11,9 @@ import FirebaseFirestoreSwift
 import MapKit
 
 
+//when tapping select map or select photos, focusstate has to be set to nil
+
+
 //Enums
 enum Mode {
     case new
@@ -23,7 +26,6 @@ enum Action {
     case cancel
 }
 
-
 struct CreatePostView: View {
     
     //offline info
@@ -32,9 +34,15 @@ struct CreatePostView: View {
     @State var offlineLattitude: Double = 0.0
     @State var offlineLongitude: Double = 0.0
     @EnvironmentObject private var vm: PostViewModel
-
-
     
+    
+    //FocusState
+    private enum Field: Int, CaseIterable {
+        case title, location
+    }
+    @FocusState private var focusedField: Field?
+
+
     //Presenting this sheet
     @Binding var isAddingView: Bool
     
@@ -200,6 +208,9 @@ extension CreatePostView {
         }
          .buttonStyle(.bordered)
          .tint(viewModel.images.isEmpty ? .red : .orange)
+         .onTapGesture {
+             focusedField = nil
+         }
     }
     
     private var addPhotosButtonSingular: some View {
@@ -209,6 +220,9 @@ extension CreatePostView {
 
         }
          .buttonStyle(.bordered)
+         .onTapGesture {
+             focusedField = nil
+         }
 //         .tint(imagePicker.images.isEmpty ? .red : .orange)
     }
     
@@ -257,11 +271,13 @@ extension CreatePostView {
     
     private var noImagesSelected: some View {
         Label("tap to select up to 10 images:", systemImage: "photo.on.rectangle.angled")
+            
 
     }
     
     private var editImagesSelected: some View {
         Label("edit selected images", systemImage: "square.and.pencil")
+            
 
     }
     
@@ -348,6 +364,7 @@ extension CreatePostView {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
+                .focused($focusedField, equals: .title)
             
             CharactersRemainView(currentCount: offlineTitle.count)
 
@@ -369,6 +386,7 @@ extension CreatePostView {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .foregroundColor(.secondary)
+                .focused($focusedField, equals: .location)
             
             CharactersRemainView(currentCount: offlineLocation.count)
 

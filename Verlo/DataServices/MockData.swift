@@ -18,7 +18,9 @@ class PostsDataService {
             
             Post(id: "4", title: "tuff reflections", locationText: "casc creek", lattitude: 42.45167, longitude: -76.51000, pictures: ["casc-creek"], dateEvent: Date(timeIntervalSinceReferenceDate: TimeInterval(696_000_000))),
             
-            Post(id: "5", title: "donlon kinda fire 🔥", locationText: "donlon", lattitude: 42.454964, longitude: -76.478088, pictures: ["donlon-1","donlon-2"], dateEvent: Date())
+            Post(id: "5", title: "donlon kinda fire 🔥", locationText: "donlon", lattitude: 42.454964, longitude: -76.478088, pictures: ["donlon-1","donlon-2"], dateEvent: Date()),
+            
+            Post(id: "6", title: "brrr 🥶", locationText: "frosh bridge", lattitude: 42.451608, longitude: -76.481623, pictures: ["bridge-snow-1", "bridge-snow-2"], dateEvent: Date(timeIntervalSinceReferenceDate: TimeInterval(696_052_000))),
         ]
 
     static let myPosts: [Post] = [
