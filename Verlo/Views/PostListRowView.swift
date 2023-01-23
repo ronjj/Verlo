@@ -10,7 +10,8 @@ import SwiftUI
 struct PostListRowView: View {
     
     var post: Post
-    
+
+
     @Binding var imagesToDisplay: [UIImage]
     @ObservedObject var viewModel = FirebasePostViewModel()
     
@@ -62,7 +63,8 @@ extension PostListRowView {
                     .multilineTextAlignment(.trailing)
                 
             }
-            Text("posted \(post.dateString.lowercased()) @ \(post.timeString)")
+//            Text("posted \(post.dateString.lowercased()) @ \(post.timeString)")
+            Text("\(post.dateEvent.timeAgoDisplay())")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .minimumScaleFactor(0.7)
@@ -76,5 +78,52 @@ extension PostListRowView {
             .fontWeight(.bold)
             .multilineTextAlignment(.leading)
             .minimumScaleFactor(0.5)
+    }
+}
+
+extension Date {
+    func timeAgoDisplay() -> String {
+        let secondsAgo = Int(Date().timeIntervalSince(self))
+        
+        let minute = 60
+        let hour = 60 * minute
+        let day = 24 * hour
+        let week = 7 * day
+        
+        //Seconds Ago
+        if secondsAgo < minute {
+            if secondsAgo == 1 {
+                return "\(secondsAgo) second ago"
+            } else {
+                return "\(secondsAgo) seconds ago"
+            }
+            
+        //Minutes Ago
+        } else if secondsAgo < hour {
+            if secondsAgo / minute == 1 {
+                return "\(secondsAgo / minute) minute ago"
+            } else {
+                return "\(secondsAgo / minute) minutes ago"
+            }
+            
+      //Hours Ago
+        } else if secondsAgo < day {
+            if secondsAgo / hour == 1 {
+                return "\(secondsAgo / hour) hour ago"
+            } else {
+                return "\(secondsAgo / hour) hours ago"
+            }
+        
+        //Days Ago
+        } else if secondsAgo < week {
+            if secondsAgo / day == 1 {
+                return "\(secondsAgo / day) day ago"
+            } else {
+                return "\(secondsAgo / day) days ago"
+            }
+        }
+        
+        //Weeks Ago
+        return "\(secondsAgo / week) weeks ago"
     }
 }
