@@ -67,6 +67,14 @@ public struct LocationPicker: View {
                 Spacer()
                 
                 //MARK: Code to see coordinates in the location picker
+                Button {
+                    coordinates.longitude = -76.484366
+                    coordinates.latitude = 42.449317
+                } label: {
+                    Text("Reset Coordinates")
+                }
+                .buttonStyle(.bordered)
+                
                 Text("\(coordinates.latitude), \(coordinates.longitude)")
                     .padding()
                     .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))

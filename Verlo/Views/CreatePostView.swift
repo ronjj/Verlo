@@ -336,13 +336,6 @@ extension CreatePostView {
         .tint(.green)
     }
     
-    private var mapSelectLocationText: some View {
-        Text("select location")
-            .font(.subheadline)
-            .fontWeight(.bold)
-            .background(.ultraThinMaterial)
-    }
-    
     //MARK: Title
     
     private var titleTextField: some View {
