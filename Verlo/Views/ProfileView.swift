@@ -28,6 +28,7 @@ struct ProfileView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
+                    emailAndSignOut
                     myPostsView
                     toVisitPostsView
                         .padding(.vertical)
@@ -36,17 +37,7 @@ struct ProfileView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    VStack(alignment: .leading){
                         profileText
-                        signedInAsText
-                    }
-                    
-                    .padding(.bottom)
-
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    signOutButton
                 }
             }
         }
@@ -61,6 +52,15 @@ extension ProfileView {
                 .font(.title)
                 .fontWeight(.black)
         }
+    }
+    
+    private var emailAndSignOut: some View {
+        HStack {
+            signedInAsText
+            Spacer()
+            signOutButton
+        }
+        .padding(.horizontal)
     }
     
     private var signedInAsText: some View {
@@ -149,6 +149,5 @@ extension ProfileView {
                 }
             }
         }
-        .padding(.top)
     }
 }
