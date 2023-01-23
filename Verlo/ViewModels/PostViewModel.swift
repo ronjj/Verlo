@@ -11,7 +11,7 @@ class PostViewModel: ObservableObject {
 
     @Published var posts: [Post]
     @Published var myPosts: [Post]
-    @Published var likedPosts: [Post]
+    @Published var toVisitPosts: [Post]
 
     init() {
         let posts = PostsDataService.posts
@@ -20,8 +20,8 @@ class PostViewModel: ObservableObject {
         let myPosts = PostsDataService.myPosts
         self.myPosts = myPosts
         
-        let likedPosts = PostsDataService.likedPosts
-        self.likedPosts = likedPosts
+        let toVisitPosts = PostsDataService.toVisitPosts
+        self.toVisitPosts = toVisitPosts
     }
 
 

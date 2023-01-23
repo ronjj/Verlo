@@ -29,7 +29,7 @@ struct ProfileView: View {
                 
                 ScrollView{
                     myPostsView
-                    likedPostsView
+                    toVisitPostsView
                         .padding(.vertical)
                 }
                 .scrollIndicators(.hidden)
@@ -90,17 +90,17 @@ extension ProfileView {
         .tint(.white)
     }
     
-    private var likedPostsView: some View {
+    private var toVisitPostsView: some View {
         VStack {
             VStack(spacing: 3){
-                Text("liked posts")
+                Text("to visit")
                     .font(.headline)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(.horizontal)
                 
                 Rectangle()
-                    .frame(width: 85, height: 2)
+                    .frame(width: 60, height: 2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment:.leading)
                     .padding(.horizontal)
@@ -108,7 +108,7 @@ extension ProfileView {
 
             
             LazyVGrid(columns: columns) {
-                ForEach(vm.likedPosts) { post in
+                ForEach(vm.toVisitPosts) { post in
                     NavigationLink(destination: PostDetailView(post: post)) {
                         PostListRowView(post: post, imagesToDisplay: $viewModel.imagesToDisplay)
                         

@@ -26,7 +26,7 @@ class PostsDataService {
         
     ]
     
-    static let likedPosts: [Post] = [
+    static let toVisitPosts: [Post] = [
         Post(id: "4", title: "tuff reflections", locationText: "casc creek", lattitude: 42.45167, longitude: -76.51000, pictures: ["casc-creek"], dateEvent: Date()),
         
         Post(id: "5", title: "donlon kinda fire 🔥", locationText: "donlon", lattitude: 42.454964, longitude: -76.478088, pictures: ["donlon-1","donlon-2"], dateEvent: Date())
