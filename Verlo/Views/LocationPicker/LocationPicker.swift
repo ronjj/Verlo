@@ -67,13 +67,25 @@ public struct LocationPicker: View {
                 Spacer()
                 
                 //MARK: Code to see coordinates in the location picker
+                if coordinates.longitude != -76.484366 && coordinates.latitude != 42.449317 {
+                    Button {
+                        coordinates.longitude = -76.484366
+                        coordinates.latitude = 42.449317
+                    } label: {
+                        Text("Reset Coordinates")
+                    }
+                    .buttonStyle(.bordered)
+                }
+                
+                
                 Button {
-                    coordinates.longitude = -76.484366
-                    coordinates.latitude = 42.449317
+                  
                 } label: {
-                    Text("Reset Coordinates")
+                    Text("Switch Map Type")
                 }
                 .buttonStyle(.bordered)
+                
+                
                 
                 Text("\(coordinates.latitude), \(coordinates.longitude)")
                     .padding()
