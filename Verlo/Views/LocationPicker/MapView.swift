@@ -16,6 +16,8 @@ struct MapView: UIViewRepresentable {
     
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var span: MKCoordinateSpan
+    @Binding var defaultMapType: MKMapType
+    @Binding var switchMapType: Bool
 
     let mapView = MKMapView()
 
@@ -24,12 +26,22 @@ struct MapView: UIViewRepresentable {
         mapView.centerCoordinate = self.centerCoordinate
         mapView.region.span = self.span
         
+        //MARK: Switching Map Types
+        if switchMapType {
+            mapView.mapType = .hybrid
+        } else {
+            mapView.mapType = .standard
+        }
+        
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: self.centerCoordinate.latitude, longitude: self.centerCoordinate.longitude)
+        
+        //MARK: Map Type Update
+        view.mapType = self.defaultMapType
 
         view.removeAnnotations(view.annotations)
         view.addAnnotation(annotation)

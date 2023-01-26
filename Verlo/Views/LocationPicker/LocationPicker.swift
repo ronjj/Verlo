@@ -19,6 +19,8 @@ public struct LocationPicker: View {
     
     let instructions: String
     @Binding var coordinates: CLLocationCoordinate2D
+    @State private var defaultMapType: MKMapType = .standard
+    @State private var switchMapType: Bool = false
 
 
     @State var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
@@ -50,8 +52,7 @@ public struct LocationPicker: View {
     
     public var body: some View {
         ZStack {
-            
-            MapView(centerCoordinate: $coordinates, span: $span)
+            MapView(centerCoordinate: $coordinates, span: $span, defaultMapType: $defaultMapType, switchMapType: $switchMapType)
                 .edgesIgnoringSafeArea(.vertical)
             
             VStack {
@@ -66,42 +67,65 @@ public struct LocationPicker: View {
                     
                 Spacer()
                 
-                //MARK: Code to see coordinates in the location picker
+                switchMapButton
+                
+                //MARK: Reset Coordintaes Button
                 if coordinates.longitude != -76.484366 && coordinates.latitude != 42.449317 {
                     Button {
                         coordinates.longitude = -76.484366
                         coordinates.latitude = 42.449317
                     } label: {
-                        Text("Reset Coordinates")
+                        Text("reset coordinates")
                     }
-                    .buttonStyle(.bordered)
+                    .padding()
+                    .background(.thinMaterial)
+                    .cornerRadius(10)
+
                 }
                 
-                
-                Button {
-                  
-                } label: {
-                    Text("Switch Map Type")
-                }
-                .buttonStyle(.bordered)
-                
-                
-                
+                //MARK: Code to see coordinates in the location picker
                 Text("\(coordinates.latitude), \(coordinates.longitude)")
                     .padding()
                     .background(VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial)).cornerRadius(20))
                     .onTapGesture {
                         UIPasteboard.general.setValue("\(coordinates.latitude), \(coordinates.longitude)", forPasteboardType: kUTTypePlainText as String)
                     }
-                
-            }.padding()
-            
+            }
+            .padding()
         }
     }
 }
 
-//struct LocationPicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LocationPicker(instructions: "Tap to select your coordinates", coordinates: .constant(CLLocationCoordinate2D(latitude: 37.333747, longitude: -122.011448)))
-//    }
-//}
+extension LocationPicker {
+    private var switchMapButton: some View {
+        Button {
+            switchMapType.toggle()
+            
+            if switchMapType {
+                defaultMapType = .hybrid
+            }
+            
+            if !switchMapType{
+                defaultMapType = .standard
+            }
+        } label : {
+            if defaultMapType == .standard {
+                Image(systemName: "globe.americas")
+                    .font(.title2)
+                    .padding(16)
+                    .foregroundColor(.primary)
+                    .background(.thinMaterial)
+                    .cornerRadius(10)
+                    .shadow(radius: 4)
+            } else {
+                Image(systemName: "pencil.and.outline")
+                    .font(.title2)
+                    .padding(16)
+                    .foregroundColor(.primary)
+                    .background(.thinMaterial)
+                    .cornerRadius(10)
+                    .shadow(radius: 4)
+            }
+        }
+    }
+}
