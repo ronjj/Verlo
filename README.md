@@ -7,6 +7,8 @@ Verlo is an app designed to help students "See It", or in other words, help stud
 
 Developed using Swift and SwiftUI
 
+Demo Video: https://youtu.be/4jq0bioye8U
+
 Screenshots:
 
 <img src="/Verlo SS and Assets/IMG_5378.PNG" alt="login screen" title="Login Screen" height = "694" width = "321">
